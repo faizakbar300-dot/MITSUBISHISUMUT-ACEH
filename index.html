@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mitsubishi Sumut-Aceh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+  /* Layout: dark showroom. Sticky header, hero with angled red panel and large vehicle, filter bar, model grid, contact band. */
+  :root {
+    --black: #0b0b0c;
+    --ink: #141416;
+    --ink-2: #1b1b1e;
+    --line: #2b2b30;
+    --white: #f7f5f2;
+    --muted: #a6a6ad;
+    --red: #d6001c;
+    --red-hot: #ff2a41;
+    --font-display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
+    --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+    z-index: 30; background: var(--black);
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible, select:focus-visible {
+    outline: 3px solid var(--white); outline-offset: 3px;
+  }
+  .wrap { width: 100%; max-width: 1160px; margin-inline: auto; }
+
+  /* Header */
+  header.top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: var(--black);
+    border-bottom: 1px solid var(--line);
+    margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+    padding-inline: max(16px, env(safe-area-inset-left, 0px));
+  }
+  .top-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
+  .brand-mark {
+    width: 38px; height: 38px; background: var(--red); display: grid; place-items: center;
+    font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: .02em;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+    flex: none;
+  }
+  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: .06em; line-height: 1; }
+  .brand-sub { display: block; font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: .14em; color: var(--muted); margin-top: 3px; }
+  nav.links { display: flex; align-items: center; gap: 22px; }
+  nav.links a.l { text-decoration: none; font-weight: 500; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  nav.links a.l:hover { color: var(--white); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .08em; text-transform: uppercase;
+    text-decoration: none; border: 0; cursor: pointer;
+    padding: 11px 20px; background: var(--red); color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 100% 70%, calc(100% - 12px) 100%, 0 100%);
+    transition: background .15s;
+  }
+  .btn:hover { background: var(--red-hot); }
+  .btn.ghost { background: var(--white); color: var(--black); }
+  .btn.ghost:hover { background: #fff; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* Hero */
+  .hero { position: relative; padding-block: 48px 40px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; align-items: center; }
+  .hero::before {
+    content: ""; position: absolute; z-index: 0; top: 0; bottom: 0; right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+    width: 56%; background: var(--red);
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .hero > * { position: relative; z-index: 1; min-width: 0; }
+  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--red-hot); margin: 0 0 14px; }
+  h1 {
+    font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+    font-size: clamp(46px, 7.4vw, 92px); line-height: .92; letter-spacing: .005em; margin: 0 0 18px;
+    text-wrap: balance;
+  }
+  h1 em { font-style: normal; color: var(--red-hot); }
+  .lede { max-width: 46ch; color: #d4d4d8; font-size: 18px; margin: 0 0 26px; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+  .facts { display: flex; flex-wrap: wrap; gap: 26px 40px; }
+  .fact b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 1; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
+  .fact span { font-size: 13px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  .hero-art { display: block; width: 100%; max-width: 100%; filter: drop-shadow(0 18px 30px rgba(0,0,0,.55)); }
+
+  /* Filters */
+  .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; padding-top: 56px; padding-bottom: 20px; }
+  h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(34px, 5vw, 52px); line-height: 1; margin: 0; letter-spacing: .01em; }
+  .sub { color: var(--muted); margin: 8px 0 0; max-width: 52ch; }
+  .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-bottom: 24px; }
+  .chip {
+    font-family: var(--font-body); font-weight: 600; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
+    background: transparent; color: var(--white); border: 1px solid var(--line); padding: 9px 16px; cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .chip:hover { border-color: var(--white); }
+  .chip[aria-pressed="true"] { background: var(--white); color: var(--black); border-color: var(--white); }
+  .budget { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .budget label { font-size: 13px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+  select#budget {
+    background: var(--ink); color: var(--white); border: 1px solid var(--line);
+    font-family: var(--font-body); font-size: 15px; padding: 9px 12px; max-width: 100%;
+  }
+
+  /* Cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+  .card { background: var(--ink); border: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
+  .card:hover { border-color: #4a4a52; }
+  .shot { position: relative; background: radial-gradient(120% 90% at 50% 100%, #2a0b10 0%, var(--ink-2) 55%, var(--ink) 100%); padding: 22px 14px 6px; }
+  .shot svg { display: block; width: 100%; max-width: 100%; height: auto; }
+  .tag {
+    position: absolute; top: 0; left: 0; background: var(--red); color: var(--white);
+    font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 6px 22px 6px 14px; clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  }
+  .info { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .info h3 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 30px; line-height: 1; letter-spacing: .03em; margin: 0; }
+  .range-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+  .price { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .price small { font-size: 18px; color: var(--muted); font-weight: 600; }
+  .variants { font-size: 14px; color: var(--muted); margin: 2px 0 14px; }
+  .info .btn { margin-top: auto; align-self: stretch; }
+  .empty { grid-column: 1 / -1; padding: 40px 20px; border: 1px dashed var(--line); text-align: center; color: var(--muted); }
+
+  /* Contact */
+  .contact { margin-top: 72px; background: var(--red); position: relative; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 0px)); }
+  .contact-in { padding: 44px 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
+  .contact h2 { font-size: clamp(36px, 5.4vw, 60px); }
+  .contact p { margin: 10px 0 0; max-width: 48ch; color: #ffe9ec; }
+  .numbox { background: var(--black); padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .numbox .lab { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+  .num { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 5vw, 44px); letter-spacing: .04em; line-height: 1; font-variant-numeric: tabular-nums; user-select: all; overflow-wrap: anywhere; }
+  .numbox .row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .hours { font-size: 14px; color: var(--muted); }
+
+  footer { padding-block: 28px 110px; color: var(--muted); font-size: 13px; display: grid; gap: 8px; }
+  footer a { color: var(--white); }
+
+  /* Floating WhatsApp */
+  .fab {
+    position: fixed; z-index: 25;
+    right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    background: var(--white); color: var(--black); text-decoration: none;
+    font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: .08em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px 12px 14px;
+    border-left: 6px solid var(--red); box-shadow: 0 8px 24px rgba(0,0,0,.6);
+  }
+  .fab svg { width: 22px; height: 22px; fill: var(--red); }
+  .fab:hover { background: #fff; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-block: 36px 28px; }
+    .hero::before { width: 100%; top: auto; height: 46%; clip-path: polygon(0 24%, 100% 0, 100% 100%, 0 100%); }
+    .hero-art { order: -1; max-width: 520px; margin-inline: auto; }
+    .contact-in { grid-template-columns: 1fr; padding: 32px 18px; }
+    .budget { margin-left: 0; width: 100%; }
+    nav.links a.l { display: none; }
+  }
+  @media (max-width: 420px) {
+    .brand-sub { display: none; }
+    .top .btn { padding: 10px 14px; font-size: 15px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .chip { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#atas" aria-label="MITSUBISHI SUMUT-ACEH, ke atas">
+      <span class="brand-mark" aria-hidden="true">M</span>
+      <span class="brand-name">MITSUBISHI <span class="brand-sub">DEALER MITSUBISHI · SUMUT-ACEH</span></span>
+    </a>
+    <nav class="links" aria-label="Menu utama">
+      <a class="l" href="#model">Model</a>
+      <a class="l" href="#kontak">Kontak</a>
+      <a class="btn" id="waTop" href="#kontak" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.200-3.500-8.400ZM12 21.800a9.900 9.900 0 0 1-5.100-1.400l-.4-.2-3.700 1 1-3.600-.2-.4A9.900 9.900 0 0 1 2.100 12C2.100 6.500 6.500 2.100 12 2.100c2.600 0 5.100 1 7 2.900a9.800 9.800 0 0 1 2.900 7c0 5.500-4.400 9.800-9.900 9.800Zm5.400-7.400c-.3-.1-1.800-.9-2-1s-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100a8 8 0 0 1-4-3.500c-.3-.5.300-.5.900-1.600.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100c.2.200 2.100 3.300 5.200 4.600 1.900.8 2.700.9 3.600.8.600-.1 1.800-.7 2-1.400.3-.7.300-1.300.2-1.400s-.3-.2-.6-.3Z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="atas">
+  <section class="hero" aria-labelledby="judul">
+    <div>
+      <p class="eyebrow">Dealer Mitsubishi · Sumatera Utara & Aceh</p>
+      <h1 id="judul">Mitsubishi baru. <em>Harga jelas</em> dari awal.</h1>
+      <p class="lede">Lihat kisaran harga setiap model, pilih yang cocok dengan budget, lalu tanyakan promo dan simulasi cicilan langsung lewat WhatsApp.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#model">Lihat Model</a>
+        <a class="btn ghost" id="waHero" href="#kontak" target="_blank" rel="noopener">Chat WhatsApp</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><b id="factCount">7</b><span>Model tersedia</span></div>
+        <div class="fact"><b id="factRange">Rp 239 – 785 jt</b><span>Kisaran harga</span></div>
+      </div>
+    </div>
+    <div id="heroArt" aria-hidden="true"></div>
+  </section>
+
+  <section id="model" aria-labelledby="h-model">
+    <div class="section-head">
+      <div>
+        <h2 id="h-model">Pilih Model</h2>
+        <p class="sub">Harga di bawah adalah kisaran dari varian termurah sampai termahal. Harga final tergantung wilayah, warna, dan promo yang berjalan.</p>
+      </div>
+    </div>
+    <div class="filters" role="group" aria-label="Filter model">
+      <button class="chip" type="button" data-type="Semua" aria-pressed="true">Semua</button>
+      <button class="chip" type="button" data-type="MPV" aria-pressed="false">MPV</button>
+      <button class="chip" type="button" data-type="SUV" aria-pressed="false">SUV</button>
+      <button class="chip" type="button" data-type="Pick up" aria-pressed="false">Pick up</button>
+      <button class="chip" type="button" data-type="Niaga" aria-pressed="false">Niaga</button>
+      <div class="budget">
+        <label for="budget">Budget</label>
+        <select id="budget">
+          <option value="all">Semua harga</option>
+          <option value="lt300">Di bawah Rp 300 juta</option>
+          <option value="300-450">Rp 300 – 450 juta</option>
+          <option value="gt450">Di atas Rp 450 juta</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </section>
+
+  <section class="contact" id="kontak" aria-labelledby="h-kontak">
+    <div class="contact-in">
+      <div>
+        <h2 id="h-kontak">PT.DIPO INTERNASIONAL PAHALA OTOMOTIF</h2>
+        <p>Dealer Mitsubishi resmi terbesar  di wilayah Sumatera Utara dan Aceh.</p>
+      </div>
+      <div class="numbox">
+        <span class="lab">Nomor WhatsApp</span>
+        <span class="num" id="numText">+62 813-7612-8387</span>
+        <div class="row">
+          <a class="btn" id="waContact" href="#kontak" target="_blank" rel="noopener">Chat Sekarang</a>
+          <button class="btn ghost" type="button" id="copyBtn">Salin Nomor</button>
+        </div>
+        <span class="hours" id="copyNote">Senin – Sabtu, 08.00 – 17.00 WIB</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Harga acuan dari daftar harga Februari 2026 (<a href="https://moladin.com/news/harga-mobil-mitsubishi-2026/" target="_blank" rel="noopener">Moladin</a>) dan bisa berubah. Konfirmasi harga terbaru ke dealer.</div>
+    <div>Gambar kendaraan adalah ilustrasi contoh, bukan foto resmi. Situs ini bukan situs resmi Mitsubishi Motors.</div>
+    <div>&copy; <span id="yr">2026</span> MITSUBISHI SUMUT-ACEH</div>
+  </footer>
+</main>
+
+<a class="fab" id="waFab" href="#kontak" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.200-3.500-8.400Zm-3.100 10.900c-.3-.1-1.800-.9-2-1s-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100a8 8 0 0 1-4-3.500c-.3-.5.300-.5.900-1.600.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100c.2.200 2.100 3.300 5.200 4.600 1.900.8 2.700.9 3.600.8.600-.1 1.800-.7 2-1.400.3-.7.300-1.300.2-1.400s-.3-.2-.6-.3Z"/></svg>
+  Chat
+</a>
+
+<script>
+  /* ===== Edit di sini: nomor WhatsApp (format internasional tanpa + atau 0 di depan) ===== */
+  var WA_NUMBER = "6281376128387";
+  var WA_DISPLAY = "+62 813-7612-8387";
+  var DEALER = "Mitsubishi SUMUT-ACEH";
+
+  /* Harga dalam juta rupiah. Sumber: daftar harga Februari 2026 (Moladin). */
+  var CARS = [
+    { name: "Xpander/CROSS", type: "MPV", shape: "mpv", color: "#ececec", min: 296, max: 345, variants: "GLS MT – CROSS PREMIUM" },
+    { name: "Xforce", type: "SUV", shape: "suv", color: "#ececec", min: 390, max: 462, variants: "Exceed CVT – 55th Anniversary Edition" },
+    { name: "Destinator", type: "SUV", shape: "suv", color: "#34343a", min: 406, max: 500, variants: "GLS – 55th Anniversary Edition" },
+    { name: "Pajero Sport", type: "SUV", shape: "suv", color: "#2b2b30", min: 600, max: 800, variants: "Exceed 4×2 MT – Dakar Ultimate 4×4 AT" },
+    { name: "Triton", type: "Pick up", shape: "pickup", color: "#d6001c", min: 320, max: 600, variants: "GLX MT Single Cab 2WD – Ultimate AT Double Cab 4WD" },
+    { name: "Colt diesel", type: "Pick up", shape: "pickup", color: "#d6001c", min: 420, max: 560, variants: "FE74 HD N – FE75 SHDX N" },
+    { name: "L300", type: "Niaga", shape: "cab", color: "#ececec", min: 250, max: 270, variants: "Cab Chassis – Pick Up Flat Deck" }
+    
+  ];
+
+  var SHAPES = {
+    mpv: { body: "M26 144 L26 120 Q26 108 44 104 L108 94 Q128 64 166 60 L270 60 Q302 62 320 92 L354 104 Q374 110 374 126 L374 144 Z",
+           glass: "M118 94 Q134 70 168 68 L196 68 L196 94 Z M204 68 L268 68 Q290 70 304 94 L204 94 Z", wheels: [104, 298], r: 26, extra: "" },
+    suv:  { body: "M24 144 L24 112 Q24 100 44 97 L116 90 L148 56 L290 52 Q314 54 328 84 L358 96 Q376 102 376 120 L376 144 Z",
+           glass: "M126 90 L152 62 L196 62 L196 90 Z M204 62 L288 60 Q304 62 316 90 L204 90 Z", wheels: [104, 300], r: 29, extra: "" },
+    pickup: { body: "M22 144 L22 118 Q22 106 42 102 L106 94 L138 60 L214 60 L228 96 L228 102 L376 102 L376 144 Z",
+           glass: "M114 94 L142 66 L172 66 L172 94 Z M180 66 L210 66 L222 94 L180 94 Z", wheels: [100, 300], r: 29,
+           extra: '<path d="M234 102 L234 114 L372 114" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="3"/>' },
+    cab:  { body: "M24 144 L24 112 Q24 100 40 96 L62 56 L134 56 L140 96 L148 108 L376 108 L376 144 Z",
+           glass: "M68 62 L128 62 L132 92 L52 92 Z", wheels: [92, 300], r: 26,
+           extra: '<rect x="150" y="98" width="226" height="10" fill="rgba(0,0,0,.5)"/>' }
+  };
+
+  function carSVG(c, uid, big) {
+    var s = SHAPES[c.shape];
+    var arch = s.r + 8, cy = 144;
+    var wheels = s.wheels.map(function (cx) {
+      return '<circle cx="' + cx + '" cy="' + cy + '" r="' + arch + '" fill="#0b0b0c"/>' +
+             '<circle cx="' + cx + '" cy="' + cy + '" r="' + s.r + '" fill="#050505" stroke="#3a3a40" stroke-width="2"/>' +
+             '<circle cx="' + cx + '" cy="' + cy + '" r="' + (s.r * 0.58).toFixed(1) + '" fill="#d9d9de"/>' +
+             '<circle cx="' + cx + '" cy="' + cy + '" r="' + (s.r * 0.2).toFixed(1) + '" fill="#2a2a30"/>';
+    }).join("");
+    return '<svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi ' + c.name + '">' +
+      '<defs><linearGradient id="g' + uid + '" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0" stop-color="#ffffff" stop-opacity=".38"/><stop offset=".55" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#000000" stop-opacity=".42"/></linearGradient></defs>' +
+      '<ellipse cx="200" cy="176" rx="170" ry="9" fill="#d6001c" opacity=".28"/>' +
+      '<path d="' + s.body + '" fill="' + c.color + '" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linejoin="round"/>' +
+      '<path d="' + s.body + '" fill="url(#g' + uid + ')"/>' +
+      '<path d="' + s.glass + '" fill="#0c0d10" stroke="rgba(255,255,255,.28)" stroke-width="1.5" stroke-linejoin="round"/>' +
+      s.extra +
+      '<path d="M30 126 L370 126" stroke="rgba(0,0,0,.25)" stroke-width="2"/>' +
+      '<rect x="360" y="108" width="14" height="7" rx="2" fill="#fff6c8"/>' +
+      '<rect x="24" y="110" width="7" height="10" rx="2" fill="#ff2a41"/>' +
+      wheels + '</svg>';
+  }
+
+  function fmt(n) {
+    var v = Math.round(n * 100) / 100;
+    var t = (Math.abs(v - Math.round(v)) < 0.001) ? String(Math.round(v)) : v.toFixed(v * 10 === Math.round(v * 10) ? 1 : 2);
+    return t.replace(".", ",");
+  }
+  function rangeText(c) { return "Rp " + fmt(c.min) + " – " + fmt(c.max) + " <small>juta</small>"; }
+
+  function waLink(text) {
+    return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
+  }
+
+  var state = { type: "Semua", budget: "all" };
+
+  function matchBudget(c) {
+    switch (state.budget) {
+      case "lt300": return c.min < 300;
+      case "300-450": return c.min <= 450 && c.max >= 300;
+      case "gt450": return c.max > 450;
+      default: return true;
+    }
+  }
+
+  function render() {
+    var list = CARS.filter(function (c) {
+      return (state.type === "Semua" || c.type === state.type) && matchBudget(c);
+    });
+    var grid = document.getElementById("grid");
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty">Belum ada model yang cocok dengan filter ini. Coba ganti tipe atau budget.</div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (c, i) {
+      var msg = "Halo " + DEALER + ", saya tertarik dengan Mitsubishi " + c.name + ". Boleh minta info harga, promo, dan simulasi cicilan?";
+      return '<article class="card">' +
+        '<div class="shot"><span class="tag">' + c.type + '</span>' + carSVG(c, "c" + i) + '</div>' +
+        '<div class="info">' +
+          '<h3>' + c.name + '</h3>' +
+          '<span class="range-label">Kisaran harga</span>' +
+          '<div class="price">' + rangeText(c) + '</div>' +
+          '<p class="variants">Varian: ' + c.variants + '</p>' +
+          '<a class="btn" href="' + waLink(msg) + '" target="_blank" rel="noopener">Tanya via WhatsApp</a>' +
+        '</div></article>';
+    }).join("");
+  }
+
+  /* Filter wiring */
+  document.querySelectorAll(".chip").forEach(function (b) {
+    b.addEventListener("click", function () {
+      state.type = b.getAttribute("data-type");
+      document.querySelectorAll(".chip").forEach(function (x) {
+        x.setAttribute("aria-pressed", x === b ? "true" : "false");
+      });
+      render();
+    });
+  });
+  document.getElementById("budget").addEventListener("change", function (e) {
+    state.budget = e.target.value; render();
+  });
+
+  /* Hero, facts, contact */
+  document.getElementById("heroArt").innerHTML = carSVG({ name: "Pajero Sport", shape: "suv", color: "#f2f2f2" }, "hero").replace("<svg ", '<svg class="hero-art" ');
+  var lo = Math.min.apply(null, CARS.map(function (c) { return c.min; }));
+  var hi = Math.max.apply(null, CARS.map(function (c) { return c.max; }));
+  document.getElementById("factCount").textContent = CARS.length;
+  document.getElementById("factRange").textContent = "Rp " + Math.floor(lo) + " – " + Math.round(hi) + " jt";
+  document.getElementById("numText").textContent = WA_DISPLAY;
+  document.getElementById("yr").textContent = new Date().getFullYear();
+
+  var general = "Halo " + DEALER + ", saya ingin tanya harga dan promo Mitsubishi.";
+  ["waTop", "waHero", "waContact", "waFab"].forEach(function (id) {
+    document.getElementById(id).setAttribute("href", waLink(general));
+  });
+
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var note = document.getElementById("copyNote");
+    var done = function () { note.textContent = "Nomor tersalin."; };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(document.getElementById("numText"));
+      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      note.textContent = "Nomor terpilih, salin dengan Ctrl+C.";
+    };
+    try {
+      navigator.clipboard.writeText(WA_DISPLAY).then(done, fallback);
+    } catch (e) { fallback(); }
+  });
+
+  render();
+</script>
+
+</body>
+</html>
