@@ -6,353 +6,465 @@
 <title>Mitsubishi Sumut-Aceh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
-  /* Layout: dark showroom. Sticky header, hero with angled red panel and large vehicle, filter bar, model grid, contact band. */
   :root {
-    --black: #0b0b0c;
-    --ink: #141416;
-    --ink-2: #1b1b1e;
-    --line: #2b2b30;
-    --white: #f7f5f2;
-    --muted: #a6a6ad;
-    --red: #d6001c;
-    --red-hot: #ff2a41;
-    --font-display: "Barlow Condensed", "Arial Narrow", Impact, sans-serif;
-    --font-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+    --black:#050506; --ink:#111114; --ink-2:#1a1a1f; --line:#2a2a31;
+    --white:#f7f5f2; --muted:#a8a8b0; --red:#e60012; --red-hot:#ff3347;
+    --font-display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+    --font-body:"Barlow","Helvetica Neue",Arial,sans-serif;
+    --header-h:84px;
     color-scheme: dark;
   }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: var(--font-body);
-    font-size: 16px;
-    line-height: 1.55;
-    padding-left: max(16px, env(safe-area-inset-left, 0px));
-    padding-right: max(16px, env(safe-area-inset-right, 0px));
-    padding-block: 0;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
-    z-index: 30; background: var(--black);
-  }
-  a { color: inherit; }
-  a:focus-visible, button:focus-visible, select:focus-visible {
-    outline: 3px solid var(--white); outline-offset: 3px;
-  }
-  .wrap { width: 100%; max-width: 1160px; margin-inline: auto; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--black);color:var(--white);font-family:var(--font-body);font-size:16px;line-height:1.55;overflow-x:hidden}
+  a{color:inherit}
+  a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--white);outline-offset:3px}
+  .wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:20px}
 
-  /* Header */
-  header.top {
-    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
-    background: var(--black);
-    border-bottom: 1px solid var(--line);
-    margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
-    padding-inline: max(16px, env(safe-area-inset-left, 0px));
-  }
-  .top-in { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
-  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; }
-  .brand-mark {
-    width: 38px; height: 38px; background: var(--red); display: grid; place-items: center;
-    font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: .02em;
-    clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
-    flex: none;
-  }
-  .brand-name { font-family: var(--font-display); font-weight: 700; font-size: 22px; text-transform: uppercase; letter-spacing: .06em; line-height: 1; }
-  .brand-sub { display: block; font-family: var(--font-body); font-weight: 500; font-size: 11px; letter-spacing: .14em; color: var(--muted); margin-top: 3px; }
-  nav.links { display: flex; align-items: center; gap: 22px; }
-  nav.links a.l { text-decoration: none; font-weight: 500; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-  nav.links a.l:hover { color: var(--white); }
+  /* ===== Header ===== */
+  header.top{position:sticky;top:0;z-index:50;background:#000;height:var(--header-h);border-bottom:1px solid #141417}
+  .top-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1400px;margin-inline:auto;padding-inline:24px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+  /* Slot logo: taruh file logo resmi Anda bernama logo-mitsubishi.png di folder yang sama */
+  .logo-box{height:62px;min-width:62px;background:#000;display:flex;align-items:center;justify-content:center}
+  .logo-box img{height:62px;width:auto;display:block}
+  .brand-text{font-family:var(--font-display);font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1.05;font-size:15px}
+  .brand-text small{display:block;font-family:var(--font-body);font-weight:500;font-size:10px;letter-spacing:.06em;text-transform:none;color:var(--muted);margin-top:2px}
 
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: .08em; text-transform: uppercase;
-    text-decoration: none; border: 0; cursor: pointer;
-    padding: 11px 20px; background: var(--red); color: var(--white);
-    clip-path: polygon(0 0, 100% 0, 100% 70%, calc(100% - 12px) 100%, 0 100%);
-    transition: background .15s;
-  }
-  .btn:hover { background: var(--red-hot); }
-  .btn.ghost { background: var(--white); color: var(--black); }
-  .btn.ghost:hover { background: #fff; }
-  .btn svg { width: 18px; height: 18px; flex: none; }
+  nav.menu{display:flex;align-items:center;gap:6px}
+  .nav-item{position:relative}
+  .nav-btn{background:none;border:0;color:var(--white);cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;padding:14px 16px;display:flex;align-items:center;gap:8px}
+  .nav-btn svg{width:16px;height:16px;transition:transform .2s}
+  .nav-item:hover .nav-btn,.nav-item.open .nav-btn{color:var(--red-hot)}
+  .nav-item.open .nav-btn svg{transform:rotate(180deg)}
+  .dropdown{position:absolute;top:100%;left:0;min-width:230px;background:#0c0c0e;border:1px solid var(--line);border-top:3px solid var(--red);display:none;padding:8px 0;box-shadow:0 20px 40px rgba(0,0,0,.6)}
+  .nav-item.open .dropdown{display:block}
+  .dropdown a{display:block;padding:11px 20px;text-decoration:none;font-size:14px;letter-spacing:.04em;color:#ddd}
+  .dropdown a:hover{background:var(--red);color:#fff}
+  .icon-btn{background:none;border:0;color:var(--white);cursor:pointer;padding:10px;display:grid;place-items:center}
+  .icon-btn svg{width:24px;height:24px}
+  .icon-btn:hover{color:var(--red-hot)}
+  .burger{display:none}
 
-  /* Hero */
-  .hero { position: relative; padding-block: 48px 40px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 24px; align-items: center; }
-  .hero::before {
-    content: ""; position: absolute; z-index: 0; top: 0; bottom: 0; right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
-    width: 56%; background: var(--red);
-    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
-  }
-  .hero > * { position: relative; z-index: 1; min-width: 0; }
-  .eyebrow { font-weight: 600; font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--red-hot); margin: 0 0 14px; }
-  h1 {
-    font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
-    font-size: clamp(46px, 7.4vw, 92px); line-height: .92; letter-spacing: .005em; margin: 0 0 18px;
-    text-wrap: balance;
-  }
-  h1 em { font-style: normal; color: var(--red-hot); }
-  .lede { max-width: 46ch; color: #d4d4d8; font-size: 18px; margin: 0 0 26px; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
-  .facts { display: flex; flex-wrap: wrap; gap: 26px 40px; }
-  .fact b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 1; letter-spacing: .02em; font-variant-numeric: tabular-nums; }
-  .fact span { font-size: 13px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
-  .hero-art { display: block; width: 100%; max-width: 100%; filter: drop-shadow(0 18px 30px rgba(0,0,0,.55)); }
+  /* Search overlay */
+  .search-overlay{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.94);display:none;padding:110px 20px 20px}
+  .search-overlay.show{display:block}
+  .search-overlay .box{max-width:720px;margin:0 auto}
+  .search-overlay input{width:100%;background:transparent;border:0;border-bottom:2px solid var(--red);color:#fff;font-family:var(--font-display);font-size:clamp(28px,6vw,48px);padding:10px 0;text-transform:uppercase;letter-spacing:.04em}
+  .search-overlay input:focus{outline:none}
+  .search-results{margin-top:20px;display:grid;gap:8px}
+  .search-results a{display:flex;justify-content:space-between;gap:12px;padding:14px 16px;border:1px solid var(--line);text-decoration:none;background:var(--ink)}
+  .search-results a:hover{border-color:var(--red)}
+  .search-close{position:absolute;top:22px;right:24px;font-size:34px;line-height:1}
 
-  /* Filters */
-  .section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; padding-top: 56px; padding-bottom: 20px; }
-  h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(34px, 5vw, 52px); line-height: 1; margin: 0; letter-spacing: .01em; }
-  .sub { color: var(--muted); margin: 8px 0 0; max-width: 52ch; }
-  .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-bottom: 24px; }
-  .chip {
-    font-family: var(--font-body); font-weight: 600; font-size: 14px; letter-spacing: .06em; text-transform: uppercase;
-    background: transparent; color: var(--white); border: 1px solid var(--line); padding: 9px 16px; cursor: pointer;
-    transition: background .15s, border-color .15s;
-  }
-  .chip:hover { border-color: var(--white); }
-  .chip[aria-pressed="true"] { background: var(--white); color: var(--black); border-color: var(--white); }
-  .budget { margin-left: auto; display: flex; align-items: center; gap: 10px; }
-  .budget label { font-size: 13px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
-  select#budget {
-    background: var(--ink); color: var(--white); border: 1px solid var(--line);
-    font-family: var(--font-body); font-size: 15px; padding: 9px 12px; max-width: 100%;
-  }
+  /* ===== Hero slider ===== */
+  .hero{position:relative;height:min(78vh,720px);min-height:520px;overflow:hidden;background:#000}
+  .slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .9s ease,visibility .9s;display:flex;align-items:center}
+  .slide.active{opacity:1;visibility:visible}
+  .slide-bg{position:absolute;inset:0}
+  .slide-car{position:absolute;right:2%;bottom:6%;width:min(62%,880px);max-height:78%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.7));transform:translateX(60px);transition:transform 1.2s ease}
+  .slide.active .slide-car{transform:translateX(0)}
+  .slide-copy{position:relative;z-index:2;max-width:560px;padding-left:max(24px,calc((100vw - 1400px)/2 + 24px));padding-right:20px}
+  .slide-copy .kicker{font-family:var(--font-display);font-style:italic;font-weight:700;font-size:30px;margin:0;letter-spacing:.02em}
+  .slide-copy h1{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(56px,9vw,120px);line-height:.88;margin:0;letter-spacing:.01em}
+  .slide-copy .badge{display:inline-block;margin-top:10px;font-family:var(--font-display);font-weight:800;font-size:clamp(28px,4vw,46px);letter-spacing:.14em;border:2px solid #fff;padding:0 14px;line-height:1.15}
+  .slide-copy .tagline{font-weight:500;letter-spacing:.5em;text-transform:uppercase;font-size:14px;margin:22px 0 28px;color:#e8e8ec}
+  .outline-btn{display:inline-block;border:2px solid #fff;background:rgba(0,0,0,.25);color:#fff;text-decoration:none;font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;padding:15px 22px;margin:0 10px 10px 0;cursor:pointer;transition:background .2s,color .2s}
+  .outline-btn:hover{background:#fff;color:#000}
+  .outline-btn.solid{background:var(--red);border-color:var(--red)}
+  .outline-btn.solid:hover{background:#fff;border-color:#fff;color:#000}
+  .hero-arrow{position:absolute;top:50%;z-index:5;transform:translateY(-50%);background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.3);color:#fff;width:48px;height:48px;cursor:pointer;display:grid;place-items:center}
+  .hero-arrow:hover{background:var(--red)}
+  .hero-arrow svg{width:22px;height:22px}
+  .hero-arrow.prev{left:14px}.hero-arrow.next{right:14px}
+  .dots{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);display:flex;gap:10px;z-index:5}
+  .dots button{width:34px;height:4px;border:0;background:rgba(255,255,255,.35);cursor:pointer;padding:0}
+  .dots button.active{background:var(--red)}
 
-  /* Cards */
-.card{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    text-align:center;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transition:0.3s;
-}
+  /* Quick actions bar */
+  .quick{background:var(--red);}
+  .quick-in{max-width:1400px;margin-inline:auto;display:grid;grid-template-columns:repeat(4,1fr)}
+  .quick a{display:flex;align-items:center;justify-content:center;gap:10px;padding:20px 12px;text-decoration:none;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:14px;border-right:1px solid rgba(255,255,255,.25)}
+  .quick a:last-child{border-right:0}
+  .quick a:hover{background:#000}
+  .quick svg{width:22px;height:22px;flex:none}
 
-.card:hover{
-    transform:translateY(-8px);
-}
+  /* ===== Sections ===== */
+  section{scroll-margin-top:var(--header-h)}
+  .section-head{padding-top:72px;padding-bottom:22px}
+  .eyebrow{font-weight:700;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--red-hot);margin:0 0 8px}
+  h2{font-family:var(--font-display);font-weight:800;text-transform:uppercase;font-size:clamp(36px,5vw,56px);line-height:1;margin:0;letter-spacing:.01em}
+  .sub{color:var(--muted);margin:10px 0 0;max-width:60ch}
 
-.card img{
-    width:100%;
-    height:220px;
-    object-fit:cover;
-}
+  .filters{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-bottom:26px}
+  .chip{font-family:var(--font-body);font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#fff;border:1px solid var(--line);padding:10px 18px;cursor:pointer}
+  .chip:hover{border-color:#fff}
+  .chip[aria-pressed="true"]{background:var(--red);border-color:var(--red)}
+  .filters input,.filters select,.form input,.form select{background:#0e0e11;color:#fff;border:1px solid #34343c;font:inherit;padding:10px 13px;min-height:42px;max-width:100%}
+  .search-box{flex:1;min-width:180px}.search-box input{width:100%}
+  .budget{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .budget label{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
 
-.card-content{
-    padding:15px;
-}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:22px}
+  .card{background:var(--ink);border:1px solid var(--line);display:flex;flex-direction:column;min-width:0;transition:transform .25s,border-color .25s;position:relative}
+  .card:hover{transform:translateY(-6px);border-color:var(--red)}
+  .shot{position:relative;background:radial-gradient(ellipse at 50% 100%,rgba(230,0,18,.35),transparent 65%),linear-gradient(160deg,#1d1d23,#0b0b0d);padding:34px 14px 10px}
+  .shot img{display:block;width:100%;height:210px;object-fit:contain;transition:transform .4s}
+  .card:hover .shot img{transform:scale(1.06)}
+  .tag{position:absolute;top:0;left:0;background:var(--red);font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;padding:6px 18px}
+  .cmp{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;cursor:pointer;font-weight:600}
+  .cmp[aria-pressed="true"]{background:#fff;color:#000}
+  .info{padding:20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .info h3{font-family:var(--font-display);font-weight:700;text-transform:uppercase;font-size:32px;line-height:1;letter-spacing:.03em;margin:0}
+  .range-label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+  .price{font-family:var(--font-display);font-weight:700;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+  .price small{font-size:18px;color:var(--muted)}
+  .variants{font-size:14px;color:var(--muted);margin:2px 0 14px}
+  .card-actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:0;cursor:pointer;padding:12px 18px;background:var(--red);color:#fff;transition:background .15s}
+  .btn:hover{background:var(--red-hot)}
+  .btn.ghost{background:#fff;color:#000}
+  .btn.ghost:hover{background:#ddd}
+  .btn.dark{background:transparent;border:1px solid #555}
+  .btn.dark:hover{border-color:#fff;background:#111}
+  .btn svg{width:18px;height:18px}
+  .empty{grid-column:1/-1;padding:40px 20px;border:1px dashed var(--line);text-align:center;color:var(--muted)}
 
-.card-content h3{
-    color:#333;
-}
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 20px; }
-  .card { background: var(--ink); border: 1px solid var(--line); display: flex; flex-direction: column; min-width: 0; }
-  .card:hover { border-color: #4a4a52; }
-  .shot { position: relative; background: radial-gradient(120% 90% at 50% 100%, #2a0b10 0%, var(--ink-2) 55%, var(--ink) 100%); padding: 22px 14px 6px; }
-  .shot svg { display: block; width: 100%; max-width: 100%; height: auto; }
-  .tag {
-    position: absolute; top: 0; left: 0; background: var(--red); color: var(--white);
-    font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .12em; text-transform: uppercase;
-    padding: 6px 22px 6px 14px; clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
-  }
-  .info { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
-  .info h3 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 30px; line-height: 1; letter-spacing: .03em; margin: 0; }
-  .range-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
-  .price { font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 1.1; font-variant-numeric: tabular-nums; }
-  .price small { font-size: 18px; color: var(--muted); font-weight: 600; }
-  .variants { font-size: 14px; color: var(--muted); margin: 2px 0 14px; }
-  .info .btn { margin-top: auto; align-self: stretch; }
-  .empty { grid-column: 1 / -1; padding: 40px 20px; border: 1px dashed var(--line); text-align: center; color: var(--muted); }
+  /* Compare bar */
+  .compare-bar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;color:#000;padding:12px 20px;display:none;align-items:center;justify-content:space-between;gap:12px;border-top:4px solid var(--red)}
+  .compare-bar.show{display:flex}
+  .compare-bar b{font-family:var(--font-display);font-size:20px;letter-spacing:.06em;text-transform:uppercase}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;overflow:auto}
+  .modal.show{display:flex}
+  .modal-box{background:var(--ink);border:1px solid var(--line);border-top:4px solid var(--red);max-width:760px;width:100%;padding:28px;position:relative;max-height:92vh;overflow:auto}
+  .modal-box h3{font-family:var(--font-display);text-transform:uppercase;font-size:34px;margin:0 0 14px}
+  .modal-x{position:absolute;top:10px;right:16px;background:none;border:0;color:#fff;font-size:32px;cursor:pointer}
+  table.cmp-table{width:100%;border-collapse:collapse;font-size:15px}
+  table.cmp-table th,table.cmp-table td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  table.cmp-table th{font-family:var(--font-display);text-transform:uppercase;font-size:20px;letter-spacing:.04em}
+  table.cmp-table td:first-child{color:var(--muted);text-transform:uppercase;font-size:12px;letter-spacing:.1em;width:28%}
+
+  /* Services */
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .service-card{padding:26px;border:1px solid var(--line);background:var(--ink);display:flex;flex-direction:column;gap:6px}
+  .service-card:hover{border-color:var(--red)}
+  .service-icon{width:50px;height:50px;background:var(--red);display:grid;place-items:center;margin-bottom:14px}
+  .service-icon svg{width:26px;height:26px}
+  .service-card h3{font-family:var(--font-display);text-transform:uppercase;font-size:26px;margin:0}
+  .service-card p{color:var(--muted);margin:0 0 14px;flex:1}
+
+  /* Calculator */
+  .calc{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:var(--ink)}
+  .form{padding:28px;display:grid;gap:14px}
+  .form label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+  .form input,.form select{width:100%}
+  .form input[type=range]{padding:0;min-height:0;accent-color:var(--red)}
+  .calc-out{padding:28px;background:linear-gradient(150deg,#e60012,#7d0010);display:flex;flex-direction:column;justify-content:center;gap:8px}
+  .calc-out .big{font-family:var(--font-display);font-weight:800;font-size:clamp(40px,6vw,64px);line-height:1;font-variant-numeric:tabular-nums}
+  .calc-out small{color:#ffd9dd;display:block}
+  .calc-out .rows{display:grid;gap:4px;margin:10px 0 16px;font-size:15px}
+  .calc-out .rows div{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);padding:6px 0}
+
+  /* Promo & News */
+  .promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .promo{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(140deg,#1c1c22,#0a0a0c);padding:28px;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
+  .promo::before{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;background:var(--red);opacity:.9;transform:rotate(45deg)}
+  .promo .pct{position:absolute;top:18px;right:20px;font-family:var(--font-display);font-weight:800;font-size:44px;z-index:1}
+  .promo h3{font-family:var(--font-display);text-transform:uppercase;font-size:30px;margin:0;line-height:1}
+  .promo p{margin:0;color:var(--muted)}
+  .news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .news{border:1px solid var(--line);background:var(--ink);display:flex;flex-direction:column}
+  .news .thumb{height:160px;background:linear-gradient(135deg,#2a2a32,#101013);display:grid;place-items:center;font-family:var(--font-display);font-weight:800;font-size:46px;color:var(--red);letter-spacing:.1em}
+  .news .body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .news time{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red-hot);font-weight:700}
+  .news h3{margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:24px;line-height:1.1}
+  .news p{margin:0;color:var(--muted);font-size:15px}
+
+  /* Dealer locations */
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .loc{border:1px solid var(--line);background:var(--ink);padding:24px;display:flex;flex-direction:column;gap:6px}
+  .loc h3{font-family:var(--font-display);text-transform:uppercase;font-size:26px;margin:0}
+  .loc p{margin:0;color:var(--muted)}
 
   /* Contact */
-  .contact { margin-top: 72px; background: var(--red); position: relative; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 0px)); }
-  .contact-in { padding: 44px 28px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
-  .contact h2 { font-size: clamp(36px, 5.4vw, 60px); }
-  .contact p { margin: 10px 0 0; max-width: 48ch; color: #ffe9ec; }
-  .numbox { background: var(--black); padding: 22px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-  .numbox .lab { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-  .num { font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 5vw, 44px); letter-spacing: .04em; line-height: 1; font-variant-numeric: tabular-nums; user-select: all; overflow-wrap: anywhere; }
-  .numbox .row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .hours { font-size: 14px; color: var(--muted); }
-  .contact-box{
-    max-width:1200px;
-    margin:25px auto;
-    background:#fff3b0;
-    color:#222;
-    padding:50px;
-    border-radius:25px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);}
-  footer { padding-block: 28px 110px; color: var(--muted); font-size: 13px; display: grid; gap: 8px; }
-  footer a { color: var(--white); }
+  .contact{margin-top:80px;background:linear-gradient(115deg,#e60012,#8a0011 70%,#3a0009)}
+  .contact-in{padding:56px 20px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;max-width:1200px;margin-inline:auto}
+  .contact h2{font-size:clamp(34px,5vw,56px)}
+  .contact p{margin:10px 0 0;max-width:48ch;color:#ffe9ec}
+  .numbox{background:#000;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+  .numbox .lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .num{font-family:var(--font-display);font-weight:800;font-size:clamp(30px,5vw,44px);letter-spacing:.04em;line-height:1;overflow-wrap:anywhere}
+  .numbox .row{display:flex;flex-wrap:wrap;gap:10px}
+  .hours{font-size:14px;color:var(--muted)}
+  footer{background:#000;padding:36px 20px 120px;color:var(--muted);font-size:13px;text-align:center}
 
-  /* Floating WhatsApp */
-  .fab {
-    position: fixed; z-index: 25;
-    right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    background: var(--white); color: var(--black); text-decoration: none;
-    font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: .08em; text-transform: uppercase;
-    display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px 12px 14px;
-    border-left: 6px solid var(--red); box-shadow: 0 8px 24px rgba(0,0,0,.6);
-  }
-  .fab svg { width: 22px; height: 22px; fill: var(--red); }
-  .fab:hover { background: #fff; }
+  /* Floating assistant */
+  .assistant{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+  .bubble{background:var(--red);color:#fff;border-radius:16px;padding:16px 40px 16px 18px;max-width:300px;box-shadow:0 10px 30px rgba(0,0,0,.6);position:relative;cursor:pointer}
+  .bubble b{font-size:18px;display:block}
+  .bubble span{font-size:14px}
+  .bubble .x{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.25);border:0;color:#fff;cursor:pointer;line-height:1}
+  .avatar{width:56px;height:56px;border-radius:50%;background:var(--red);border:3px solid #fff;color:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+  .avatar svg{width:28px;height:28px}
+  .chat{width:min(360px,calc(100vw - 36px));background:var(--ink);border:1px solid var(--line);border-top:4px solid var(--red);display:none;flex-direction:column;max-height:70vh;box-shadow:0 20px 50px rgba(0,0,0,.7)}
+  .chat.show{display:flex}
+  .chat-head{padding:14px 16px;background:var(--red);display:flex;justify-content:space-between;align-items:center;font-weight:700}
+  .chat-head button{background:none;border:0;color:#fff;font-size:24px;cursor:pointer}
+  .chat-body{padding:14px;overflow:auto;display:flex;flex-direction:column;gap:10px;flex:1;min-height:180px}
+  .msg{padding:10px 14px;border-radius:14px;max-width:88%;font-size:15px}
+  .msg.bot{background:#26262d;align-self:flex-start}
+  .msg.me{background:var(--red);align-self:flex-end}
+  .quick-replies{display:flex;flex-wrap:wrap;gap:8px;padding:0 14px 12px}
+  .quick-replies button{background:transparent;border:1px solid #666;color:#fff;border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer}
+  .quick-replies button:hover{background:#fff;color:#000}
+  .chat-form{display:flex;border-top:1px solid var(--line)}
+  .chat-form input{flex:1;background:#0c0c0e;border:0;color:#fff;padding:14px;font:inherit}
+  .chat-form input:focus{outline:none}
+  .chat-form button{background:var(--red);border:0;color:#fff;padding:0 18px;font-weight:700;cursor:pointer}
+  body.has-compare .assistant{bottom:76px}
+  body.has-compare footer{padding-bottom:160px}
 
-  @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; padding-block: 36px 28px; }
-    .hero::before { width: 100%; top: auto; height: 46%; clip-path: polygon(0 24%, 100% 0, 100% 100%, 0 100%); }
-    .hero-art { order: -1; max-width: 520px; margin-inline: auto; }
-    .contact-in { grid-template-columns: 1fr; padding: 32px 18px; }
-    .budget { margin-left: 0; width: 100%; }
-    nav.links a.l { display: none; }
+  /* Responsive */
+  @media (max-width:1100px){
+    .burger{display:grid}
+    nav.menu{position:fixed;top:var(--header-h);left:0;right:0;bottom:0;background:#000;flex-direction:column;align-items:stretch;gap:0;padding:10px 0;display:none;overflow:auto}
+    nav.menu.show{display:flex}
+    .nav-btn{width:100%;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #1a1a1d}
+    .dropdown{position:static;border:0;border-left:3px solid var(--red);margin-left:24px;box-shadow:none}
+    .service-grid{grid-template-columns:repeat(2,1fr)}
   }
-  @media (max-width: 420px) {
-    .brand-sub { display: none; }
-    .top .btn { padding: 10px 14px; font-size: 15px; }
+  @media (max-width:860px){
+    .hero{height:auto;min-height:0}
+    .slide{position:absolute}
+    .hero{min-height:620px}
+    .slide{align-items:flex-start;padding-top:36px}
+    .slide-copy{padding-left:24px}
+    .slide-car{width:94%;right:3%;bottom:70px;max-height:42%}
+    .slide-copy .tagline{letter-spacing:.3em;margin:14px 0 18px}
+    .quick-in{grid-template-columns:repeat(2,1fr)}
+    .quick a{border-bottom:1px solid rgba(255,255,255,.25)}
+    .calc,.contact-in,.loc-grid{grid-template-columns:1fr}
+    .promo-grid,.news-grid{grid-template-columns:1fr}
+    .budget{margin-left:0;width:100%}
+    .brand-text small{display:none}
   }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .btn, .chip { transition: none; }
+  @media (max-width:560px){
+    .service-grid{grid-template-columns:1fr}
+    .hero-arrow{display:none}
+    .card-actions{grid-template-columns:1fr}
+    .logo-box,.logo-box img{height:52px}
   }
-
-  /* Modern gradient refresh */
-  :root { --black:#080b12; --ink:#111725; --ink-2:#1b2435; --line:#2c3547; --red:#e11d2e; --red-hot:#ff5264; --muted:#aeb8ca; --white:#f8faff; }
-  body { background: radial-gradient(ellipse at 85% 4%,rgba(225,29,46,.18),transparent 34%), radial-gradient(ellipse at 5% 45%,rgba(39,79,140,.15),transparent 36%),var(--black); }
-  header.top { background:rgba(8,11,18,.88); backdrop-filter:blur(18px); border-bottom-color:rgba(255,255,255,.1); }
-  .brand-mark { background:linear-gradient(135deg,#ff596b,#b60019); box-shadow:0 8px 24px #e11d2e40; }
-  .btn { background:linear-gradient(120deg,#ff465b,#c90020); border-radius:8px; clip-path:none; box-shadow:0 8px 22px rgba(225,29,46,.2); }
-  .btn:hover { background:linear-gradient(120deg,#ff7180,#e11d2e); transform:translateY(-2px); }
-  .btn.ghost { background:linear-gradient(135deg,#f9fbff,#dce4f2); color:#101522; box-shadow:none; }
-  .hero { padding-block:64px 52px; gap:38px; }
-  .hero::before { width:59%; background:linear-gradient(135deg,#fa334a 0%,#b60020 48%,#64112b 100%); border-radius:30px 0 0 30px; opacity:.96; }
-  .hero::after { content:""; position:absolute; right:0; bottom:0; width:50%; height:70%; background:radial-gradient(ellipse at center,rgba(255,255,255,.17),transparent 68%); pointer-events:none; }
-  .eyebrow { color:#ff6575; }
-  h1 em { background:linear-gradient(100deg,#ff6678,#ffb0b7); -webkit-background-clip:text; background-clip:text; color:transparent; }
-  .hero-art { filter:drop-shadow(0 25px 35px rgba(0,0,0,.6)); }
-  .fact b { color:#fff; }
-  .section-head { padding-top:68px; }
-  .filters { background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.08); padding:14px; border-radius:16px; }
-  .chip { border-radius:999px; }
-  .chip[aria-pressed="true"] { background:linear-gradient(120deg,#fff,#dce4f2); }
-  select#budget,.search-box input { background:#121a29; color:var(--white); border:1px solid #354158; border-radius:9px; padding:10px 13px; font:inherit; min-height:42px; }
-  .search-box { flex:1; min-width:180px; }
-  .search-box input { width:100%; }
-  .grid { gap:22px; }
-  .card { border-radius:18px; border:1px solid rgba(255,255,255,.1); background:linear-gradient(155deg,rgba(31,42,61,.95),rgba(13,17,27,.98)); overflow:hidden; box-shadow:0 16px 36px rgba(0,0,0,.18); transition:transform .25s,border-color .25s,box-shadow .25s; }
-  .card:hover { transform:translateY(-7px); border-color:rgba(255,80,100,.55); box-shadow:0 22px 42px rgba(0,0,0,.3); }
-  .shot { background:radial-gradient(ellipse at 50% 95%,rgba(225,29,46,.32),transparent 60%),linear-gradient(145deg,#222d41,#101522); padding-top:28px; }
-  /* Area kosong untuk foto mobil yang bisa ditambahkan manual */
-  .car-photo-placeholder { min-height:220px; width:100%; display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; border:2px dashed rgba(255,255,255,.32); border-radius:12px; background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.01)); color:#d4d9e4; }
-  .car-photo-placeholder .placeholder-inner { display:grid; justify-items:center; gap:8px; }
-  .car-photo-placeholder .placeholder-inner strong { font-size:13px; letter-spacing:.12em; }
-  .car-photo-placeholder .placeholder-inner small { color:#9ba6b9; font-size:12px; }
-  .hero-photo-placeholder { min-height:300px; border:2px dashed rgba(255,255,255,.45); border-radius:22px; background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(10,15,25,.20)); display:flex; align-items:center; justify-content:center; text-align:center; padding:24px; color:#fff; }
-  .hero-photo-placeholder .placeholder-inner { display:grid; justify-items:center; gap:10px; }
-  .hero-photo-placeholder strong { font-size:14px; letter-spacing:.12em; }
-  .hero-photo-placeholder small { color:#f0dfe2; font-size:12px; }
-  .tag { background:linear-gradient(120deg,#ff5264,#bd001e); border-radius:0 0 10px 0; clip-path:none; }
-  .info { padding:22px; }
-  .info h3 { font-size:32px; }
-  .price { color:#fff; }
-  .contact { background:linear-gradient(115deg,#ed293e,#a90020 60%,#64112b); border-radius:22px; clip-path:none; overflow:hidden; }
-  .numbox { border:1px solid rgba(255,255,255,.12); border-radius:16px; background:rgba(8,11,18,.86); }
-  .fab { border-radius:999px; border-left:0; background:linear-gradient(120deg,#fff,#dbe4f2); box-shadow:0 10px 30px #0008; }
-  .extra-section { padding-bottom:24px; }
-  .service-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
-  .service-card { padding:26px; border:1px solid rgba(255,255,255,.1); border-radius:18px; background:linear-gradient(145deg,rgba(32,44,65,.9),rgba(13,17,27,.95)); }
-  .service-icon { display:grid; place-items:center; width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#ff596b,#a90020);font-size:24px;margin-bottom:18px; }
-  .service-card h3 { font-family:var(--font-display);text-transform:uppercase;font-size:27px;margin:0 0 8px; }
-  .service-card p { color:var(--muted);min-height:66px; }
-  .promo-strip { margin:54px 0 0;padding:36px;display:flex;align-items:center;justify-content:space-between;gap:22px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:radial-gradient(ellipse at 85% 0%,rgba(255,70,90,.26),transparent 50%),linear-gradient(120deg,#172238,#0e1421); }
-  .promo-strip h2 { font-size:clamp(30px,4vw,46px); }
-  .promo-strip p:not(.eyebrow) { color:var(--muted);margin-bottom:0; }
-  @media(max-width:700px) { .service-grid{grid-template-columns:1fr}.service-card p{min-height:0}.promo-strip{align-items:flex-start;flex-direction:column;padding:25px}.hero{padding-top:38px}.hero::before{border-radius:18px 0 0 18px} }
-
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
 
-
 <header class="top">
-  <div class="wrap top-in">
-    <a class="brand" href="#atas" aria-label="MITSUBISHI SUMUT-ACEH, ke atas">
-      <span class="brand-mark" aria-hidden="true">M</span>
-      <span class="brand-name">MITSUBISHI <span class="brand-sub">DEALER MITSUBISHI · SUMUT-ACEH</span></span>
+  <div class="top-in">
+    <a class="brand" href="#atas" aria-label="Mitsubishi Sumut-Aceh, ke atas">
+      <!-- Ganti logo-mitsubishi.png dengan file logo resmi dari Mitsubishi/dealer Anda (latar hitam) -->
+      <span class="logo-box"><img src="Mitsubishi_logo.svg-removebg-preview.png" alt="Logo Mitsubishi" onerror="this.style.display='none';this.parentNode.style.minWidth='0'"></span>
+      <span class="brand-text">Mitsubishi Motors<small>Dealer Resmi Sumut · Aceh</small></span>
     </a>
-    <nav class="links" aria-label="Menu utama">
-      <a class="l" href="#model">Model</a>
-      <a class="l" href="#layanan">Layanan</a>
-      <a class="l" href="#kontak">Kontak</a>
-      <a class="btn" id="waTop" href="#kontak" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.200-3.500-8.400ZM12 21.800a9.900 9.900 0 0 1-5.100-1.400l-.4-.2-3.700 1 1-3.600-.2-.4A9.900 9.900 0 0 1 2.100 12C2.100 6.500 6.500 2.100 12 2.100c2.600 0 5.100 1 7 2.900a9.800 9.800 0 0 1 2.900 7c0 5.500-4.400 9.800-9.900 9.800Zm5.400-7.400c-.3-.1-1.800-.9-2-1s-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100a8 8 0 0 1-4-3.500c-.3-.5.300-.5.900-1.600.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100c.2.200 2.100 3.300 5.200 4.600 1.900.8 2.700.9 3.600.8.600-.1 1.800-.7 2-1.400.3-.7.300-1.300.2-1.400s-.3-.2-.6-.3Z"/></svg>
-        WhatsApp
-      </a>
+    <nav class="menu" id="menu" aria-label="Menu utama">
+      <div class="nav-item">
+        <button class="nav-btn" type="button" aria-expanded="false">Model <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m4 8 8 8 8-8"/></svg></button>
+        <div class="dropdown">
+          <a href="#model" data-filter="Semua">Semua Model</a>
+          <a href="#model" data-filter="MPV">MPV</a>
+          <a href="#model" data-filter="SUV">SUV</a>
+          <a href="#model" data-filter="Pick up">Pick up</a>
+          <a href="#model" data-filter="Niaga">Niaga</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn" type="button" aria-expanded="false">Purna Jual <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m4 8 8 8 8-8"/></svg></button>
+        <div class="dropdown">
+          <a href="#layanan">Booking Servis</a>
+          <a href="#layanan">Suku Cadang</a>
+          <a href="#lokasi">Lokasi Bengkel</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn" type="button" aria-expanded="false">Kepemilikan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m4 8 8 8 8-8"/></svg></button>
+        <div class="dropdown">
+          <a href="#kredit">Simulasi Kredit</a>
+          <a href="#layanan">Test Drive</a>
+          <a href="#model">Bandingkan Model</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn" type="button" aria-expanded="false">Promosi <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m4 8 8 8 8-8"/></svg></button>
+        <div class="dropdown">
+          <a href="#promo">Promo Bulan Ini</a>
+          <a href="#kontak">Tanya Promo</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-btn" type="button" aria-expanded="false">Berita &amp; Aktivitas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m4 8 8 8 8-8"/></svg></button>
+        <div class="dropdown">
+          <a href="#berita">Berita Terbaru</a>
+          <a href="#lokasi">Lokasi Dealer</a>
+          <a href="#kontak">Hubungi Kami</a>
+        </div>
+      </div>
     </nav>
+    <div style="display:flex;align-items:center;gap:4px">
+      <button class="icon-btn" id="openSearch" type="button" aria-label="Cari model">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      </button>
+      <button class="icon-btn burger" id="burger" type="button" aria-label="Buka menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
-<main class="wrap" id="atas">
-  <section class="hero" aria-labelledby="judul">
-    <div>
-      <p class="eyebrow">Dealer Mitsubishi · Sumatera Utara & Aceh</p>
-      <h1 id="judul">Mitsubishi baru. <em>Harga jelas</em> dari awal.</h1>
-      <p class="lede">Lihat kisaran harga setiap model, pilih yang cocok dengan budget, lalu tanyakan promo dan simulasi cicilan langsung lewat WhatsApp.</p>
-      <div class="hero-cta">
-        <a class="btn" href="#model">Lihat Model</a>
-        <a class="btn ghost" id="waHero" href="#kontak" target="_blank" rel="noopener">Chat WhatsApp</a>
-      </div>
-      <div class="facts">
-        <div class="fact"><b id="factCount">7</b><span>Model tersedia</span></div>
-        <div class="fact"><b id="factRange">Rp 239 – 785 jt</b><span>Kisaran harga</span></div>
-      </div>
-    </div>
-    <div id="heroArt" aria-hidden="true"></div>
-  </section>
-  
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Pencarian">
+  <button class="icon-btn search-close" id="closeSearch" type="button" aria-label="Tutup">&times;</button>
+  <div class="box">
+    <input id="globalSearch" type="search" placeholder="Cari model..." autocomplete="off">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
 
-  <section id="model" aria-labelledby="h-model">
-    <div class="section-head">
-      <div>
+<main id="atas">
+  <!-- Hero slider -->
+  <section class="hero" aria-roledescription="carousel" aria-label="Model unggulan">
+    <div id="slides"></div>
+    <button class="hero-arrow prev" id="prevS" type="button" aria-label="Sebelumnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m15 4-8 8 8 8"/></svg></button>
+    <button class="hero-arrow next" id="nextS" type="button" aria-label="Berikutnya"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m9 4 8 8-8 8"/></svg></button>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <div class="quick">
+    <div class="quick-in">
+      <a href="#model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 15v-3l2-5h14l2 5v3M5 15h14M7 18v-3m10 3v-3"/></svg>Pilih Model</a>
+      <a href="#kredit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 12h2m4 0h2M8 16h2m4 0h2"/></svg>Simulasi Kredit</a>
+      <a href="#layanan" data-open="drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m12 12 5-3M12 12v6"/></svg>Test Drive</a>
+      <a href="#lokasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6 7-11a7 7 0 1 0-14 0c0 5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>Lokasi Dealer</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <section id="model" aria-labelledby="h-model">
+      <div class="section-head">
+        <p class="eyebrow">Lineup Mitsubishi</p>
         <h2 id="h-model">Pilih Model</h2>
-        <p class="sub">Harga di bawah merupakan estimasi awal dan dapat berubah menurut wilayah, varian, serta promo dealer. Konfirmasi harga OTR dan ketersediaan unit melalui WhatsApp.</p>
+        <p class="sub">Harga merupakan estimasi awal dan dapat berubah menurut wilayah, varian, serta promo dealer. Konfirmasi harga OTR dan ketersediaan unit melalui WhatsApp. Centang "Bandingkan" pada 2–3 model untuk melihat perbandingan.</p>
       </div>
-    </div>
-    <div class="filters" role="group" aria-label="Filter model">
-      <button class="chip" type="button" data-type="Semua" aria-pressed="true">Semua</button>
-      <button class="chip" type="button" data-type="MPV" aria-pressed="false">MPV</button>
-      <button class="chip" type="button" data-type="SUV" aria-pressed="false">SUV</button>
-      <button class="chip" type="button" data-type="Pick up" aria-pressed="false">Pick up</button>
-      <button class="chip" type="button" data-type="Niaga" aria-pressed="false">Niaga</button>
-      <div class="search-box"><input id="carSearch" type="search" placeholder="Cari model mobil..." aria-label="Cari model mobil"></div>
-      <div class="budget">
-        <label for="budget">Budget</label>
-        <select id="budget">
-          <option value="all">Semua harga</option>
-          <option value="lt300">Di bawah Rp 300 juta</option>
-          <option value="300-450">Rp 300 – 450 juta</option>
-          <option value="gt450">Di atas Rp 450 juta</option>
-        </select>
+      <div class="filters" role="group" aria-label="Filter model">
+        <button class="chip" type="button" data-type="Semua" aria-pressed="true">Semua</button>
+        <button class="chip" type="button" data-type="MPV" aria-pressed="false">MPV</button>
+        <button class="chip" type="button" data-type="SUV" aria-pressed="false">SUV</button>
+        <button class="chip" type="button" data-type="Pick up" aria-pressed="false">Pick up</button>
+        <button class="chip" type="button" data-type="Niaga" aria-pressed="false">Niaga</button>
+        <div class="search-box"><input id="carSearch" type="search" placeholder="Cari model mobil..." aria-label="Cari model mobil"></div>
+        <div class="budget">
+          <label for="budget">Budget</label>
+          <select id="budget">
+            <option value="all">Semua harga</option>
+            <option value="lt300">Di bawah Rp 300 juta</option>
+            <option value="300-450">Rp 300 – 450 juta</option>
+            <option value="gt450">Di atas Rp 450 juta</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="grid" id="grid" aria-live="polite"></div>
-  </section>
+      <div class="grid" id="grid" aria-live="polite"></div>
+    </section>
 
-  <section class="extra-section" id="layanan">
-    <div class="section-head"><div><p class="eyebrow">Layanan pelanggan</p><h2>Lebih mudah bersama kami</h2><p class="sub">Dari memilih kendaraan sampai menjadwalkan kunjungan, semua bisa dimulai dari website ini.</p></div></div>
-    <div class="service-grid">
-      <article class="service-card"><span class="service-icon">↗</span><h3>Simulasi Kredit</h3><p>Diskusikan DP, tenor, dan perkiraan cicilan sesuai kebutuhan Anda.</p><button class="btn" type="button" data-service="simulasi kredit">Hitung Cicilan</button></article>
-      <article class="service-card"><span class="service-icon">🚘</span><h3>Test Drive</h3><p>Rasakan kenyamanan mobil pilihan sebelum mengambil keputusan.</p><button class="btn" type="button" data-service="test drive">Jadwalkan</button></article>
-      <article class="service-card"><span class="service-icon">🛠</span><h3>Layanan Servis</h3><p>Tanyakan jadwal servis dan informasi perawatan kendaraan.</p><button class="btn" type="button" data-service="layanan servis">Tanya Servis</button></article>
-    </div>
-  </section>
-  <section class="promo-strip"><div><p class="eyebrow">Temukan kendaraan Anda</p><h2>Siap untuk perjalanan berikutnya?</h2><p>Hubungi tim dealer untuk informasi harga, ketersediaan unit, dan promo terbaru.</p></div><a class="btn ghost" id="waPromo" href="#kontak">Konsultasi Sekarang ↗</a></section>
+    <section id="kredit">
+      <div class="section-head">
+        <p class="eyebrow">Kepemilikan</p>
+        <h2>Simulasi Kredit</h2>
+        <p class="sub">Perkiraan cicilan bulanan. Angka bersifat estimasi (bunga flat 5% per tahun) — bunga dan skema sebenarnya mengikuti leasing.</p>
+      </div>
+      <div class="calc">
+        <div class="form">
+          <div><label for="cModel">Model</label><select id="cModel"></select></div>
+          <div><label for="cPrice">Harga (juta rupiah) — bisa diubah</label><input id="cPrice" type="number" min="100" step="1"></div>
+          <div><label for="cDp">Uang muka: <span id="cDpVal">30</span>%</label><input id="cDp" type="range" min="10" max="70" step="5" value="30"></div>
+          <div><label for="cTenor">Tenor</label>
+            <select id="cTenor">
+              <option value="1">1 tahun</option><option value="2">2 tahun</option><option value="3">3 tahun</option>
+              <option value="4" selected>4 tahun</option><option value="5">5 tahun</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-out">
+          <small>Estimasi cicilan per bulan</small>
+          <div class="big" id="cInstall">Rp 0</div>
+          <div class="rows">
+            <div><span>Harga kendaraan</span><b id="rPrice"></b></div>
+            <div><span>Uang muka</span><b id="rDp"></b></div>
+            <div><span>Pokok pinjaman</span><b id="rLoan"></b></div>
+          </div>
+          <button class="btn ghost" type="button" id="cWa">Ajukan via WhatsApp</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="layanan">
+      <div class="section-head">
+        <p class="eyebrow">Layanan pelanggan</p>
+        <h2>Lebih mudah bersama kami</h2>
+        <p class="sub">Isi form singkat, kami lanjutkan lewat WhatsApp.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m12 12 5-3M12 12v6"/></svg></span><h3>Test Drive</h3><p>Rasakan langsung mobil pilihan sebelum memutuskan.</p><button class="btn" type="button" data-open="drive">Jadwalkan</button></article>
+        <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 6a4 4 0 0 0 5 5l-9 9a2.100 2.100 0 0 1-3-3l9-9a4 4 0 0 0-2-2Z"/></svg></span><h3>Booking Servis</h3><p>Pesan jadwal servis berkala atau perbaikan kendaraan.</p><button class="btn" type="button" data-open="service">Booking</button></article>
+        <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.500-6.500-2 2m-9 9-2 2m0-13 2 2m9 9 2 2"/></svg></span><h3>Suku Cadang</h3><p>Cek ketersediaan suku cadang asli untuk mobil Anda.</p><button class="btn" type="button" data-service="suku cadang">Tanya Part</button></article>
+        <article class="service-card"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 12h16M4 12l5-5m-5 5 5 5M20 6v12"/></svg></span><h3>Tukar Tambah</h3><p>Taksir mobil lama Anda dan upgrade ke Mitsubishi baru.</p><button class="btn" type="button" data-service="tukar tambah">Tanya Taksiran</button></article>
+      </div>
+    </section>
+
+    <section id="promo">
+      <div class="section-head">
+        <p class="eyebrow">Promosi</p>
+        <h2>Promo Bulan Ini</h2>
+        <p class="sub">Contoh penawaran — syarat dan nilai promo aktual dikonfirmasi tim dealer.</p>
+      </div>
+      <div class="promo-grid">
+        <article class="promo"><span class="pct">DP Ringan</span><h3>Paket Cicilan Fleksibel</h3><p>Tanyakan skema DP dan tenor terbaik untuk model pilihan Anda.</p><a class="btn" href="#kontak" data-promo="paket cicilan fleksibel">Tanya Promo</a></article>
+        <article class="promo"><span class="pct">Bonus</span><h3>Gratis Servis Berkala</h3><p>Tanyakan ketentuan gratis servis untuk pembelian unit baru.</p><a class="btn" href="#kontak" data-promo="gratis servis berkala">Tanya Promo</a></article>
+        <article class="promo"><span class="pct">Spesial</span><h3>Tukar Tambah</h3><p>Nilai tukar kompetitif untuk mobil lama Anda.</p><a class="btn" href="#kontak" data-promo="tukar tambah">Tanya Promo</a></article>
+      </div>
+    </section>
+
+    <section id="berita">
+      <div class="section-head">
+        <p class="eyebrow">Berita &amp; Aktivitas</p>
+        <h2>Kabar Terbaru</h2>
+      </div>
+      <div class="news-grid">
+        <article class="news"><div class="thumb">XFORCE</div><div class="body"><time>Model</time><h3>Xforce HEV: SUV urban bertenaga hybrid</h3><p>Tanyakan ketersediaan dan estimasi harga Xforce Hybrid di dealer kami.</p></div></article>
+        <article class="news"><div class="thumb">SERVIS</div><div class="body"><time>Purna jual</time><h3>Servis berkala menjaga performa mobil</h3><p>Booking servis kapan saja lewat WhatsApp dan hindari antre panjang.</p></div></article>
+        <article class="news"><div class="thumb">EVENT</div><div class="body"><time>Aktivitas</time><h3>Pameran &amp; test drive di Sumut–Aceh</h3><p>Pantau jadwal pameran terbaru dengan menghubungi tim dealer.</p></div></article>
+      </div>
+    </section>
+
+    <section id="lokasi">
+      <div class="section-head">
+        <p class="eyebrow">Lokasi</p>
+        <h2>Dealer &amp; Bengkel</h2>
+        <p class="sub">Alamat detail cabang dikonfirmasi lewat WhatsApp.</p>
+      </div>
+      <div class="loc-grid">
+        <div class="loc"><h3>Sumatera Utara</h3><p>Showroom, servis, dan suku cadang resmi Mitsubishi.</p><a class="btn dark" id="locWa1" href="#kontak" target="_blank" rel="noopener">Tanya Alamat</a></div>
+        <div class="loc"><h3>Aceh</h3><p>Layanan penjualan dan purna jual untuk wilayah Aceh.</p><a class="btn dark" id="locWa2" href="#kontak" target="_blank" rel="noopener">Tanya Alamat</a></div>
+      </div>
+    </section>
+  </div>
+
   <section class="contact" id="kontak" aria-labelledby="h-kontak">
     <div class="contact-in">
       <div>
-        <h2 id="h-kontak">PT.DIPO INTERNASIONAL PAHALA OTOMOTIF</h2>
-        <p>Dealer Mitsubishi resmi terbesar  di wilayah Sumatera Utara dan Aceh.</p>
+        <h2 id="h-kontak">PT. Dipo Internasional Pahala Otomotif</h2>
+        <p>Dealer Mitsubishi resmi terbesar di wilayah Sumatera Utara dan Aceh.</p>
       </div>
       <div class="numbox">
         <span class="lab">Nomor WhatsApp</span>
@@ -365,185 +477,303 @@
       </div>
     </div>
   </section>
-
-  <footer>
-    <div></div>
-    <div>&copy; <span id="yr">2026</span> MITSUBISHI SUMUT-ACEH</div>
-  </footer>
 </main>
 
-<a class="fab" id="waFab" href="#kontak" target="_blank" rel="noopener" aria-label="Chat via WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 12 0C5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7a11.9 11.9 0 0 0 5.7 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.200-3.500-8.400Zm-3.100 10.900c-.3-.1-1.800-.9-2-1s-.5-.1-.7.100l-.9 1.100c-.2.200-.3.200-.6.100a8 8 0 0 1-4-3.500c-.3-.5.300-.5.900-1.600.1-.2 0-.4 0-.5l-.9-2.200c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.100-.8.400s-1 1-1 2.500 1.100 2.900 1.200 3.100c.2.200 2.100 3.300 5.200 4.600 1.900.8 2.700.9 3.600.8.600-.1 1.800-.7 2-1.400.3-.7.300-1.300.2-1.400s-.3-.2-.6-.3Z"/></svg>
-  Chat
-</a>
+<footer>&copy; <span id="yr">2026</span> Mitsubishi Sumut-Aceh · PT. Dipo Internasional Pahala Otomotif</footer>
+
+<!-- Compare bar -->
+<div class="compare-bar" id="compareBar">
+  <b><span id="cmpCount">0</span> model dipilih</b>
+  <div style="display:flex;gap:8px"><button class="btn dark" style="color:#000;border-color:#999" id="cmpClear" type="button">Reset</button><button class="btn" id="cmpOpen" type="button">Bandingkan</button></div>
+</div>
+
+<!-- Modals -->
+<div class="modal" id="mCompare"><div class="modal-box"><button class="modal-x" type="button" data-close aria-label="Tutup">&times;</button><h3>Perbandingan Model</h3><div id="cmpTable"></div></div></div>
+
+<div class="modal" id="mDrive"><div class="modal-box"><button class="modal-x" type="button" data-close aria-label="Tutup">&times;</button>
+  <h3>Jadwalkan Test Drive</h3>
+  <form class="form" id="fDrive" style="padding:0">
+    <div><label for="dName">Nama</label><input id="dName" required></div>
+    <div><label for="dModel">Model</label><select id="dModel"></select></div>
+    <div><label for="dDate">Tanggal yang diinginkan</label><input id="dDate" type="date" required></div>
+    <button class="btn" type="submit">Kirim via WhatsApp</button>
+  </form></div></div>
+
+<div class="modal" id="mService"><div class="modal-box"><button class="modal-x" type="button" data-close aria-label="Tutup">&times;</button>
+  <h3>Booking Servis</h3>
+  <form class="form" id="fService" style="padding:0">
+    <div><label for="sName">Nama</label><input id="sName" required></div>
+    <div><label for="sCar">Model &amp; tahun mobil</label><input id="sCar" placeholder="Contoh: Pajero Sport 2022" required></div>
+    <div><label for="sPlate">Nomor polisi</label><input id="sPlate" placeholder="BK 1234 XX"></div>
+    <div><label for="sDate">Tanggal servis</label><input id="sDate" type="date" required></div>
+    <button class="btn" type="submit">Kirim via WhatsApp</button>
+  </form></div></div>
+
+<!-- Virtual assistant -->
+<div class="assistant" id="assistant">
+  <div class="chat" id="chat" role="dialog" aria-label="Asisten virtual">
+    <div class="chat-head"><span>Asisten Virtual Dealer</span><button id="chatClose" type="button" aria-label="Tutup chat">&times;</button></div>
+    <div class="chat-body" id="chatBody"><div class="msg bot">Halo! Saya asisten virtual dealer Mitsubishi Sumut–Aceh. Ada yang bisa saya bantu?</div></div>
+    <div class="quick-replies" id="qr">
+      <button type="button" data-q="harga">Info harga</button>
+      <button type="button" data-q="kredit">Simulasi kredit</button>
+      <button type="button" data-q="drive">Test drive</button>
+      <button type="button" data-q="servis">Booking servis</button>
+    </div>
+    <form class="chat-form" id="chatForm"><input id="chatInput" placeholder="Tulis pesan..." autocomplete="off"><button type="submit">Kirim</button></form>
+  </div>
+  <div class="bubble" id="bubble"><button class="x" id="bubbleX" type="button" aria-label="Tutup">&times;</button><b>Halo, ada yang bisa dibantu? 😊</b><span>Asisten virtual dealer siap membantu Anda.</span></div>
+  <button class="avatar" id="avatar" type="button" aria-label="Buka asisten virtual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.500 7.200L3 21l1.800-5.500A8 8 0 1 1 21 12Z"/></svg></button>
+</div>
 
 <script>
-  /* ===== Edit di sini: nomor WhatsApp (format internasional tanpa + atau 0 di depan) ===== */
   var WA_NUMBER = "6281376128387";
   var WA_DISPLAY = "+62 813-7612-8387";
   var DEALER = "Mitsubishi SUMUT-ACEH";
 
-  /* Harga dalam juta rupiah. Sumber: daftar harga Februari 2026 (Moladin). */
   var CARS = [
-    {
-  name: "Xpander/CROSS",
-  type: "MPV",
-  shape: "mpv",
-  color: "#ececec",
-  min: 296,
-  max: 345,
-  variants: "GLS MT – CROSS PREMIUM",
-  image: "Xpander-removebg-preview.png"
-},
-    { name: "Xforce/HYBRID", type: "SUV", shape: "suv", color: "#ececec", min: 390, max: 462, variants: "Exceed CVT – 55th Anniversary Edition", image: "xforce-removebg-preview.png" },
-    { name: "Destinator", type: "SUV", shape: "suv", color: "#34343a", min: 406, max: 500, variants: "GLS – 55th Anniversary Edition", image: "DESTINATOR-removebg-preview.png" },
-    { name: "Pajero Sport", type: "SUV", shape: "suv", color: "#2b2b30", min: 600, max: 800, variants: "Exceed 4×2 MT – Dakar Ultimate 4×4 AT", image: "pajero-removebg-preview.png" },
-    { name: "Triton", type: "Pick up", shape: "pickup", color: "#d6001c", min: 320, max: 600, variants: "GLX MT Single Cab 2WD – Ultimate AT Double Cab 4WD", image: "TRITON-removebg-preview.png" },
-    { name: "Colt diesel", type: "Pick up", shape: "pickup", color: "#d6001c", min: 420, max: 560, variants: "FE74 HD N – FE75 SHDX N", image: "COLT_DIESEL-removebg-preview.png" },
-    { name: "L300", type: "Niaga", shape: "cab", color: "#ececec", min: 250, max: 270, variants: "Cab Chassis – Pick Up Flat Deck", image: "L300-removebg-preview.png" }
-    
+    { name:"Xpander/CROSS", type:"MPV", min:296, max:345, variants:"GLS MT – CROSS PREMIUM", image:"Xpander-removebg-preview.png", seats:"7 penumpang", engine:"1.5L MIVEC bensin" },
+    { name:"Xforce/HYBRID", type:"SUV", min:390, max:462, variants:"Exceed CVT – 55th Anniversary Edition", image:"xforce-removebg-preview.png", seats:"5 penumpang", engine:"1.5L bensin / Hybrid" },
+    { name:"Destinator", type:"SUV", min:406, max:500, variants:"GLS – 55th Anniversary Edition", image:"DESTINATOR-removebg-preview.png", seats:"7 penumpang", engine:"1.5L Turbo bensin" },
+    { name:"Pajero Sport", type:"SUV", min:600, max:800, variants:"Exceed 4×2 MT – Dakar Ultimate 4×4 AT", image:"pajero-removebg-preview.png", seats:"7 penumpang", engine:"2.4L Diesel Turbo" },
+    { name:"Triton", type:"Pick up", min:320, max:600, variants:"GLX MT Single Cab 2WD – Ultimate AT Double Cab 4WD", image:"TRITON-removebg-preview.png", seats:"2–5 penumpang", engine:"2.4L Diesel Turbo" },
+    { name:"Colt diesel", type:"Pick up", min:420, max:560, variants:"FE74 HD N – FE75 SHDX N", image:"COLT_DIESEL-removebg-preview.png", seats:"3 penumpang", engine:"4D34 Diesel" },
+    { name:"L300", type:"Niaga", min:250, max:270, variants:"Cab Chassis – Pick Up Flat Deck", image:"L300-removebg-preview.png", seats:"2 penumpang", engine:"2.2L Diesel" }
   ];
 
-  var SHAPES = {
-    mpv: { body: "M26 144 L26 120 Q26 108 44 104 L108 94 Q128 64 166 60 L270 60 Q302 62 320 92 L354 104 Q374 110 374 126 L374 144 Z",
-           glass: "M118 94 Q134 70 168 68 L196 68 L196 94 Z M204 68 L268 68 Q290 70 304 94 L204 94 Z", wheels: [104, 298], r: 26, extra: "" },
-    suv:  { body: "M24 144 L24 112 Q24 100 44 97 L116 90 L148 56 L290 52 Q314 54 328 84 L358 96 Q376 102 376 120 L376 144 Z",
-           glass: "M126 90 L152 62 L196 62 L196 90 Z M204 62 L288 60 Q304 62 316 90 L204 90 Z", wheels: [104, 300], r: 29, extra: "" },
-    pickup: { body: "M22 144 L22 118 Q22 106 42 102 L106 94 L138 60 L214 60 L228 96 L228 102 L376 102 L376 144 Z",
-           glass: "M114 94 L142 66 L172 66 L172 94 Z M180 66 L210 66 L222 94 L180 94 Z", wheels: [100, 300], r: 29,
-           extra: '<path d="M234 102 L234 114 L372 114" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="3"/>' },
-    cab:  { body: "M24 144 L24 112 Q24 100 40 96 L62 56 L134 56 L140 96 L148 108 L376 108 L376 144 Z",
-           glass: "M68 62 L128 62 L132 92 L52 92 Z", wheels: [92, 300], r: 26,
-           extra: '<rect x="150" y="98" width="226" height="10" fill="rgba(0,0,0,.5)"/>' }
+  var SLIDES = [
+    { kicker:"NEW", title:"Xforce", badge:"HEV", tag:"Elevated Urban SUV", img:"xforce-removebg-preview.png", more:"Xforce/HYBRID", bg:"radial-gradient(ellipse at 70% 60%,#3a3f5c 0%,#14151f 55%,#050506 100%)" },
+    { kicker:"TOUGH &amp; ADVENTUROUS", title:"Pajero Sport", badge:"", tag:"Dare to Explore", img:"pajero-removebg-preview.png", more:"Pajero Sport", bg:"radial-gradient(ellipse at 70% 60%,#4a2a2a 0%,#1a1010 55%,#050506 100%)" },
+    { kicker:"NEW", title:"Destinator", badge:"", tag:"Seven Seater SUV", img:"DESTINATOR-removebg-preview.png", more:"Destinator", bg:"radial-gradient(ellipse at 70% 60%,#2c4a52 0%,#0f1a1d 55%,#050506 100%)" },
+    { kicker:"POWERFUL PARTNER", title:"Triton", badge:"", tag:"Strong. Reliable. Ready.", img:"TRITON-removebg-preview.png", more:"Triton", bg:"radial-gradient(ellipse at 70% 60%,#5a1a20 0%,#1a0c0e 55%,#050506 100%)" }
+  ];
+
+  function $(id){return document.getElementById(id)}
+  function waLink(t){return "https://wa.me/"+WA_NUMBER+"?text="+encodeURIComponent(t)}
+  function openWa(t){window.open(waLink(t),"_blank","noopener")}
+  function fmt(n){var v=Math.round(n*100)/100;var t=(Math.abs(v-Math.round(v))<0.001)?String(Math.round(v)):v.toFixed(1);return t.replace(".",",")}
+  function rp(n){return "Rp "+Math.round(n).toLocaleString("id-ID")}
+  function rangeText(c){return "Rp "+fmt(c.min)+" – "+fmt(c.max)+" <small>juta</small>"}
+  function byName(n){return CARS.filter(function(c){return c.name===n})[0]}
+
+  /* ---------- Menu ---------- */
+  var menu=$("menu");
+  $("burger").addEventListener("click",function(){menu.classList.toggle("show")});
+  document.querySelectorAll(".nav-item").forEach(function(it){
+    var b=it.querySelector(".nav-btn");
+    b.addEventListener("click",function(e){
+      e.stopPropagation();
+      var was=it.classList.contains("open");
+      document.querySelectorAll(".nav-item").forEach(function(x){x.classList.remove("open");x.querySelector(".nav-btn").setAttribute("aria-expanded","false")});
+      if(!was){it.classList.add("open");b.setAttribute("aria-expanded","true")}
+    });
+    if(window.matchMedia("(hover:hover) and (min-width:1101px)").matches){
+      it.addEventListener("mouseenter",function(){it.classList.add("open")});
+      it.addEventListener("mouseleave",function(){it.classList.remove("open")});
+    }
+  });
+  document.addEventListener("click",function(){document.querySelectorAll(".nav-item").forEach(function(x){x.classList.remove("open")})});
+  document.querySelectorAll(".dropdown a").forEach(function(a){
+    a.addEventListener("click",function(){
+      menu.classList.remove("show");
+      var f=a.getAttribute("data-filter");
+      if(f){setType(f)}
+    });
+  });
+
+  /* ---------- Hero slider ---------- */
+  var cur=0,timer;
+  $("slides").innerHTML=SLIDES.map(function(s,i){
+    return '<div class="slide'+(i===0?' active':'')+'" data-i="'+i+'"><div class="slide-bg" style="background:'+s.bg+'"></div>'+
+      '<img class="slide-car" src="'+s.img+'" alt="Mitsubishi '+s.title+'">'+
+      '<div class="slide-copy"><p class="kicker">'+s.kicker+'</p><h1>'+s.title+'</h1>'+(s.badge?'<span class="badge">'+s.badge+'</span>':'')+
+      '<p class="tagline">'+s.tag+'</p>'+
+      '<a class="outline-btn" href="#model" data-more="'+s.more+'">Selengkapnya</a>'+
+      '<a class="outline-btn solid" href="#kontak" data-ask="'+s.more+'">Tanya Harga</a></div></div>';
+  }).join("");
+  $("dots").innerHTML=SLIDES.map(function(s,i){return '<button type="button" aria-label="Slide '+(i+1)+'"'+(i===0?' class="active"':'')+'></button>'}).join("");
+  function go(n){
+    cur=(n+SLIDES.length)%SLIDES.length;
+    document.querySelectorAll(".slide").forEach(function(s,i){s.classList.toggle("active",i===cur)});
+    document.querySelectorAll("#dots button").forEach(function(d,i){d.classList.toggle("active",i===cur)});
+    restart();
+  }
+  function restart(){clearInterval(timer);if(!window.matchMedia("(prefers-reduced-motion:reduce)").matches){timer=setInterval(function(){go(cur+1)},6000)}}
+  $("prevS").addEventListener("click",function(){go(cur-1)});
+  $("nextS").addEventListener("click",function(){go(cur+1)});
+  document.querySelectorAll("#dots button").forEach(function(d,i){d.addEventListener("click",function(){go(i)})});
+  document.querySelectorAll("[data-more]").forEach(function(a){a.addEventListener("click",function(){$("carSearch").value=a.getAttribute("data-more").split("/")[0];state.search=$("carSearch").value;setType("Semua")})});
+  document.querySelectorAll("[data-ask]").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();openWa("Halo "+DEALER+", saya tertarik dengan Mitsubishi "+a.getAttribute("data-ask")+". Boleh minta info harga dan promo?")})});
+  restart();
+
+  /* ---------- Models ---------- */
+  var state={type:"Semua",budget:"all",search:""};
+  var compare=[];
+  function matchBudget(c){
+    switch(state.budget){
+      case "lt300":return c.min<300;
+      case "300-450":return c.min<=450&&c.max>=300;
+      case "gt450":return c.max>450;
+      default:return true;
+    }
+  }
+  function setType(t){
+    state.type=t;
+    document.querySelectorAll(".chip").forEach(function(x){x.setAttribute("aria-pressed",x.getAttribute("data-type")===t?"true":"false")});
+    render();
+  }
+  function render(){
+    var list=CARS.filter(function(c){return (state.type==="Semua"||c.type===state.type)&&matchBudget(c)&&c.name.toLowerCase().indexOf(state.search.toLowerCase())>-1});
+    var grid=$("grid");
+    if(!list.length){grid.innerHTML='<div class="empty">Belum ada model yang cocok dengan filter ini. Coba ganti tipe atau budget.</div>';return}
+    grid.innerHTML=list.map(function(c){
+      var msg="Halo "+DEALER+", saya tertarik dengan Mitsubishi "+c.name+". Boleh minta info harga, promo, dan simulasi cicilan?";
+      var on=compare.indexOf(c.name)>-1;
+      return '<article class="card"><div class="shot"><span class="tag">'+c.type+'</span>'+
+        '<button class="cmp" type="button" data-cmp="'+c.name+'" aria-pressed="'+on+'">'+(on?'✓ Dipilih':'+ Bandingkan')+'</button>'+
+        '<img src="'+c.image+'" alt="'+c.name+'" loading="lazy"></div>'+
+        '<div class="info"><h3>'+c.name+'</h3><span class="range-label">Kisaran harga</span><div class="price">'+rangeText(c)+'</div>'+
+        '<p class="variants">Varian: '+c.variants+'</p>'+
+        '<div class="card-actions"><a class="btn" href="'+waLink(msg)+'" target="_blank" rel="noopener">Tanya Harga</a>'+
+        '<button class="btn dark" type="button" data-credit="'+c.name+'">Simulasi</button></div></div></article>';
+    }).join("");
+    grid.querySelectorAll("[data-cmp]").forEach(function(b){b.addEventListener("click",function(){toggleCmp(b.getAttribute("data-cmp"))})});
+    grid.querySelectorAll("[data-credit]").forEach(function(b){b.addEventListener("click",function(){
+      $("cModel").value=b.getAttribute("data-credit");calc(true);$("kredit").scrollIntoView({behavior:"smooth"});
+    })});
+  }
+  document.querySelectorAll(".chip").forEach(function(b){b.addEventListener("click",function(){setType(b.getAttribute("data-type"))})});
+  $("budget").addEventListener("change",function(e){state.budget=e.target.value;render()});
+  $("carSearch").addEventListener("input",function(e){state.search=e.target.value.trim();render()});
+
+  /* ---------- Compare ---------- */
+  function toggleCmp(n){
+    var i=compare.indexOf(n);
+    if(i>-1){compare.splice(i,1)}
+    else{if(compare.length>=3){alert("Maksimal 3 model untuk dibandingkan.");return}compare.push(n)}
+    updateCmp();render();
+  }
+  function updateCmp(){
+    $("cmpCount").textContent=compare.length;
+    $("compareBar").classList.toggle("show",compare.length>0);
+    document.body.classList.toggle("has-compare",compare.length>0);
+  }
+  $("cmpClear").addEventListener("click",function(){compare=[];updateCmp();render()});
+  $("cmpOpen").addEventListener("click",function(){
+    if(compare.length<2){alert("Pilih minimal 2 model.");return}
+    var cs=compare.map(byName);
+    var rows=[["Tipe","type"],["Kisaran harga",null],["Mesin","engine"],["Kapasitas","seats"],["Varian","variants"]];
+    var h='<div style="overflow:auto"><table class="cmp-table"><tr><th></th>'+cs.map(function(c){return '<th>'+c.name+'</th>'}).join("")+'</tr>';
+    rows.forEach(function(r){
+      h+='<tr><td>'+r[0]+'</td>'+cs.map(function(c){return '<td>'+(r[1]?c[r[1]]:"Rp "+fmt(c.min)+" – "+fmt(c.max)+" juta")+'</td>'}).join("")+'</tr>';
+    });
+    h+='</table></div><p class="sub">Data mesin &amp; kapasitas bersifat ringkasan umum; konfirmasi spesifikasi tiap varian ke dealer.</p>';
+    $("cmpTable").innerHTML=h;
+    openModal("mCompare");
+  });
+
+  /* ---------- Credit calculator ---------- */
+  var opts=CARS.map(function(c){return '<option value="'+c.name+'">'+c.name+'</option>'}).join("");
+  $("cModel").innerHTML=opts;$("dModel").innerHTML=opts;
+  function calc(resetPrice){
+    var c=byName($("cModel").value);
+    if(resetPrice)$("cPrice").value=c.min;
+    var price=(parseFloat($("cPrice").value)||0)*1e6;
+    var dpP=parseInt($("cDp").value,10);
+    var yrs=parseInt($("cTenor").value,10);
+    var dp=price*dpP/100,loan=price-dp;
+    var total=loan*(1+0.05*yrs);
+    var m=total/(yrs*12);
+    $("cDpVal").textContent=dpP;
+    $("cInstall").textContent=rp(m);
+    $("rPrice").textContent=rp(price);$("rDp").textContent=rp(dp);$("rLoan").textContent=rp(loan);
+  }
+  ["cDp","cTenor","cPrice"].forEach(function(id){$(id).addEventListener("input",function(){calc(false)})});
+  $("cModel").addEventListener("change",function(){calc(true)});
+  $("cWa").addEventListener("click",function(){
+    openWa("Halo "+DEALER+", saya ingin simulasi kredit Mitsubishi "+$("cModel").value+". Harga "+$("rPrice").textContent+", DP "+$("cDp").value+"% ("+$("rDp").textContent+"), tenor "+$("cTenor").value+" tahun. Estimasi cicilan "+$("cInstall").textContent+"/bulan. Mohon info skema resminya.");
+  });
+  calc(true);
+
+  /* ---------- Modals & forms ---------- */
+  function openModal(id){$(id).classList.add("show")}
+  document.querySelectorAll("[data-close]").forEach(function(b){b.addEventListener("click",function(){b.closest(".modal").classList.remove("show")})});
+  document.querySelectorAll(".modal").forEach(function(m){m.addEventListener("click",function(e){if(e.target===m)m.classList.remove("show")})});
+  document.querySelectorAll("[data-open]").forEach(function(b){b.addEventListener("click",function(e){
+    e.preventDefault();openModal(b.getAttribute("data-open")==="drive"?"mDrive":"mService");
+  })});
+  $("fDrive").addEventListener("submit",function(e){
+    e.preventDefault();
+    openWa("Halo "+DEALER+", saya "+$("dName").value+" ingin test drive Mitsubishi "+$("dModel").value+" pada tanggal "+$("dDate").value+". Mohon konfirmasi jadwalnya.");
+    $("mDrive").classList.remove("show");
+  });
+  $("fService").addEventListener("submit",function(e){
+    e.preventDefault();
+    openWa("Halo "+DEALER+", saya "+$("sName").value+" ingin booking servis untuk "+$("sCar").value+($("sPlate").value?" (nopol "+$("sPlate").value+")":"")+" pada tanggal "+$("sDate").value+". Mohon konfirmasi jadwalnya.");
+    $("mService").classList.remove("show");
+  });
+  document.querySelectorAll("[data-service]").forEach(function(b){b.addEventListener("click",function(){
+    openWa("Halo "+DEALER+", saya ingin bertanya tentang "+b.getAttribute("data-service")+". Mohon informasi lebih lanjut.");
+  })});
+  document.querySelectorAll("[data-promo]").forEach(function(b){b.addEventListener("click",function(e){
+    e.preventDefault();openWa("Halo "+DEALER+", saya ingin tanya detail promo "+b.getAttribute("data-promo")+".");
+  })});
+
+  /* ---------- Search overlay ---------- */
+  function closeSearch(){$("searchOverlay").classList.remove("show")}
+  $("openSearch").addEventListener("click",function(){$("searchOverlay").classList.add("show");$("globalSearch").value="";$("searchResults").innerHTML="";setTimeout(function(){$("globalSearch").focus()},50)});
+  $("closeSearch").addEventListener("click",closeSearch);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeSearch();document.querySelectorAll(".modal").forEach(function(m){m.classList.remove("show")})}});
+  $("globalSearch").addEventListener("input",function(e){
+    var q=e.target.value.trim().toLowerCase();
+    var res=q?CARS.filter(function(c){return c.name.toLowerCase().indexOf(q)>-1||c.type.toLowerCase().indexOf(q)>-1}):[];
+    $("searchResults").innerHTML=res.map(function(c){return '<a href="#model" data-s="'+c.name+'"><b>'+c.name+'</b><span>'+c.type+' · Rp '+fmt(c.min)+' – '+fmt(c.max)+' jt</span></a>'}).join("")||(q?'<div class="empty">Model tidak ditemukan.</div>':"");
+    $("searchResults").querySelectorAll("[data-s]").forEach(function(a){a.addEventListener("click",function(){
+      closeSearch();$("carSearch").value=a.getAttribute("data-s");state.search=$("carSearch").value;setType("Semua");
+    })});
+  });
+
+  /* ---------- Virtual assistant ---------- */
+  var chat=$("chat"),bubble=$("bubble");
+  function openChat(){chat.classList.add("show");bubble.style.display="none"}
+  $("avatar").addEventListener("click",function(){chat.classList.contains("show")?chat.classList.remove("show"):openChat()});
+  $("bubble").addEventListener("click",openChat);
+  $("bubbleX").addEventListener("click",function(e){e.stopPropagation();bubble.style.display="none"});
+  $("chatClose").addEventListener("click",function(){chat.classList.remove("show")});
+  function addMsg(t,who){var d=document.createElement("div");d.className="msg "+who;d.textContent=t;$("chatBody").appendChild(d);$("chatBody").scrollTop=1e9}
+  var replies={
+    harga:["Kisaran harga mulai dari Rp "+Math.min.apply(null,CARS.map(function(c){return c.min}))+" juta. Pilih model di bagian Pilih Model, lalu tekan Tanya Harga untuk harga OTR resmi.","#model"],
+    kredit:["Anda bisa mencoba kalkulator Simulasi Kredit di halaman ini untuk estimasi cicilan.","#kredit"],
+    drive:["Silakan isi form Test Drive, nanti kami lanjutkan via WhatsApp.","drive"],
+    servis:["Silakan isi form Booking Servis, nanti kami konfirmasi jadwalnya via WhatsApp.","service"]
   };
-
-  function carSVG(c, uid, big) {
-    var s = SHAPES[c.shape];
-    var arch = s.r + 8, cy = 144;
-    var wheels = s.wheels.map(function (cx) {
-      return '<circle cx="' + cx + '" cy="' + cy + '" r="' + arch + '" fill="#0b0b0c"/>' +
-             '<circle cx="' + cx + '" cy="' + cy + '" r="' + s.r + '" fill="#050505" stroke="#3a3a40" stroke-width="2"/>' +
-             '<circle cx="' + cx + '" cy="' + cy + '" r="' + (s.r * 0.58).toFixed(1) + '" fill="#d9d9de"/>' +
-             '<circle cx="' + cx + '" cy="' + cy + '" r="' + (s.r * 0.2).toFixed(1) + '" fill="#2a2a30"/>';
-    }).join("");
-    return '<svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustrasi ' + c.name + '">' +
-      '<defs><linearGradient id="g' + uid + '" x1="0" y1="0" x2="0" y2="1">' +
-      '<stop offset="0" stop-color="#ffffff" stop-opacity=".38"/><stop offset=".55" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#000000" stop-opacity=".42"/></linearGradient></defs>' +
-      '<ellipse cx="200" cy="176" rx="170" ry="9" fill="#d6001c" opacity=".28"/>' +
-      '<path d="' + s.body + '" fill="' + c.color + '" stroke="rgba(255,255,255,.4)" stroke-width="1.5" stroke-linejoin="round"/>' +
-      '<path d="' + s.body + '" fill="url(#g' + uid + ')"/>' +
-      '<path d="' + s.glass + '" fill="#0c0d10" stroke="rgba(255,255,255,.28)" stroke-width="1.5" stroke-linejoin="round"/>' +
-      s.extra +
-      '<path d="M30 126 L370 126" stroke="rgba(0,0,0,.25)" stroke-width="2"/>' +
-      '<rect x="360" y="108" width="14" height="7" rx="2" fill="#fff6c8"/>' +
-      '<rect x="24" y="110" width="7" height="10" rx="2" fill="#ff2a41"/>' +
-      wheels + '</svg>';
-  }
-
-  function fmt(n) {
-    var v = Math.round(n * 100) / 100;
-    var t = (Math.abs(v - Math.round(v)) < 0.001) ? String(Math.round(v)) : v.toFixed(v * 10 === Math.round(v * 10) ? 1 : 2);
-    return t.replace(".", ",");
-  }
-  function rangeText(c) { return "Rp " + fmt(c.min) + " – " + fmt(c.max) + " <small>juta</small>"; }
-
-  function waLink(text) {
-    return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(text);
-  }
-
-  var state = { type: "Semua", budget: "all", search: "" };
-
-  function matchBudget(c) {
-    switch (state.budget) {
-      case "lt300": return c.min < 300;
-      case "300-450": return c.min <= 450 && c.max >= 300;
-      case "gt450": return c.max > 450;
-      default: return true;
-    }
-  }
-
-  function render() {
-    var list = CARS.filter(function (c) {
-      return (state.type === "Semua" || c.type === state.type) && matchBudget(c) && c.name.toLowerCase().includes(state.search.toLowerCase());
-    });
-    var grid = document.getElementById("grid");
-    if (!list.length) {
-      grid.innerHTML = '<div class="empty">Belum ada model yang cocok dengan filter ini. Coba ganti tipe atau budget.</div>';
-      return;
-    }
-    grid.innerHTML = list.map(function (c, i) {
-      var msg = "Halo " + DEALER + ", saya tertarik dengan Mitsubishi " + c.name + ". Boleh minta info harga, promo, dan simulasi cicilan?";
-      return '<article class="card">' +
-        '<div class="shot"><span class="tag">' + c.type + '</span>' +
-'<img src="' + c.image + '" alt="' + c.name + '" ' +
-'style="display:block;width:100%;height:220px;object-fit:contain;">' +
-'</div>' +
-        '<div class="info">' +
-          '<h3>' + c.name + '</h3>' +
-          '<span class="range-label">Kisaran harga</span>' +
-          '<div class="price">' + rangeText(c) + '</div>' +
-          '<p class="variants">Varian: ' + c.variants + '</p>' +
-          '<a class="btn" href="' + waLink(msg) + '" target="_blank" rel="noopener">Tanya via WhatsApp</a>' +
-        '</div></article>';
-    }).join("");
-  }
-
-  /* Filter wiring */
-  document.querySelectorAll(".chip").forEach(function (b) {
-    b.addEventListener("click", function () {
-      state.type = b.getAttribute("data-type");
-      document.querySelectorAll(".chip").forEach(function (x) {
-        x.setAttribute("aria-pressed", x === b ? "true" : "false");
-      });
-      render();
-    });
-  });
-  document.getElementById("budget").addEventListener("change", function (e) {
-    state.budget = e.target.value; render();
-  });
-  document.getElementById("carSearch").addEventListener("input", function(e) {
-    state.search = e.target.value.trim(); render();
-  });
-  document.querySelectorAll("[data-service]").forEach(function(btn) {
-    btn.addEventListener("click", function() {
-      var topic = btn.getAttribute("data-service");
-      var message = "Halo " + DEALER + ", saya ingin bertanya tentang " + topic + ". Mohon informasi lebih lanjut.";
-      window.open(waLink(message), "_blank", "noopener");
-    });
+  document.querySelectorAll("#qr button").forEach(function(b){b.addEventListener("click",function(){
+    var k=b.getAttribute("data-q");addMsg(b.textContent,"me");
+    setTimeout(function(){
+      addMsg(replies[k][0],"bot");
+      var t=replies[k][1];
+      if(t==="drive")openModal("mDrive");else if(t==="service")openModal("mService");else{chat.classList.remove("show");location.hash=t}
+    },350);
+  })});
+  $("chatForm").addEventListener("submit",function(e){
+    e.preventDefault();var v=$("chatInput").value.trim();if(!v)return;
+    addMsg(v,"me");$("chatInput").value="";
+    setTimeout(function(){addMsg("Terima kasih! Saya sambungkan ke tim dealer lewat WhatsApp ya.","bot");openWa("Halo "+DEALER+", "+v)},400);
   });
 
-  /* Hero, facts, contact */
-  document.getElementById("heroArt").innerHTML =
-  '<img src="pajero-removebg-preview.png" ' +
-  'alt="Mitsubishi Pajero Sport" ' +
-  'style="width:100%;height:300px;object-fit:contain;">';
-  var lo = Math.min.apply(null, CARS.map(function (c) { return c.min; }));
-  var hi = Math.max.apply(null, CARS.map(function (c) { return c.max; }));
-  document.getElementById("factCount").textContent = CARS.length;
-  document.getElementById("factRange").textContent = "Rp " + Math.floor(lo) + " – " + Math.round(hi) + " jt";
-  document.getElementById("numText").textContent = WA_DISPLAY;
-  document.getElementById("yr").textContent = new Date().getFullYear();
-
-  var general = "Halo " + DEALER + ", saya ingin tanya harga dan promo Mitsubishi.";
-  ["waTop", "waHero", "waContact", "waFab", "waPromo"].forEach(function (id) {
-    document.getElementById(id).setAttribute("href", waLink(general));
-  });
-
-  document.getElementById("copyBtn").addEventListener("click", function () {
-    var note = document.getElementById("copyNote");
-    var done = function () { note.textContent = "Nomor tersalin."; };
-    var fallback = function () {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById("numText"));
-      var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
-      note.textContent = "Nomor terpilih, salin dengan Ctrl+C.";
-    };
-    try {
-      navigator.clipboard.writeText(WA_DISPLAY).then(done, fallback);
-    } catch (e) { fallback(); }
+  /* ---------- Contact ---------- */
+  $("numText").textContent=WA_DISPLAY;
+  $("yr").textContent=new Date().getFullYear();
+  var general="Halo "+DEALER+", saya ingin tanya harga dan promo Mitsubishi.";
+  ["waContact","locWa1","locWa2"].forEach(function(id){$(id).setAttribute("href",waLink(general))});
+  $("copyBtn").addEventListener("click",function(){
+    var note=$("copyNote");
+    var done=function(){note.textContent="Nomor tersalin."};
+    var fb=function(){var r=document.createRange();r.selectNodeContents($("numText"));var s=window.getSelection();s.removeAllRanges();s.addRange(r);note.textContent="Nomor terpilih, salin dengan Ctrl+C."};
+    try{navigator.clipboard.writeText(WA_DISPLAY).then(done,fb)}catch(e){fb()}
   });
 
   render();
 </script>
-
 </body>
 </html>
