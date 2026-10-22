@@ -371,7 +371,8 @@
             <option value="all">Semua harga</option>
             <option value="lt300">Di bawah Rp 300 juta</option>
             <option value="300-450">Rp 300 – 450 juta</option>
-            <option value="gt450">Di atas Rp 450 juta</option>
+            <option value="gt450">Di  Rp 450 juta -  1 miliar</option>
+            <option value="gt1000">Di atas Rp 1 miliar</option>
           </select>
         </div>
       </div>
@@ -540,7 +541,7 @@
     { name:"Triton", type:"Pick up", min:320, max:600, variants:"GLX MT Single Cab 2WD – Ultimate AT Double Cab 4WD", image:"TRITON-removebg-preview.png", seats:"2–5 penumpang", engine:"2.4L Diesel Turbo" },
     { name:"Colt diesel", type:"Pick up", min:420, max:560, variants:"FE74 HD N – FE75 SHDX N", image:"COLT_DIESEL-removebg-preview.png", seats:"3 penumpang", engine:"4D34 Diesel" },
     { name:"L300", type:"Niaga", min:250, max:270, variants:"Cab Chassis – Pick Up Flat Deck", image:"L300-removebg-preview.png", seats:"2 penumpang", engine:"2.2L Diesel" },
-    { name:"Fuso", type:"Niaga", min:500, max:800, variants:"Canter FE71 – Fighter FN61", image:"fuso_fighter-removebg-preview.png", seats:"2–3 penumpang", engine:"Diesel" },
+    { name:"Fuso", type:"Niaga", min:942, max:1400, variants:"Canter FE71 – Fighter FN61", image:"fuso_fighter-removebg-preview.png", seats:"2–3 penumpang", engine:"Diesel" },
   ];
 
   var SLIDES = [
@@ -555,7 +556,14 @@
   function openWa(t){window.open(waLink(t),"_blank","noopener")}
   function fmt(n){var v=Math.round(n*100)/100;var t=(Math.abs(v-Math.round(v))<0.001)?String(Math.round(v)):v.toFixed(1);return t.replace(".",",")}
   function rp(n){return "Rp "+Math.round(n).toLocaleString("id-ID")}
-  function rangeText(c){return "Rp "+fmt(c.min)+" – "+fmt(c.max)+" <small>juta</small>"}
+ function label(n){
+  return n>=1000 ? fmt(n/1000)+" miliar" : fmt(n)+" juta";
+}
+function rangeText(c){
+  return c.min===c.max
+    ? "Rp "+label(c.min)
+    : "Rp "+label(c.min)+" – "+label(c.max);
+}
   function byName(n){return CARS.filter(function(c){return c.name===n})[0]}
 
   /* ---------- Menu ---------- */
@@ -616,6 +624,7 @@
       case "lt300":return c.min<300;
       case "300-450":return c.min<=450&&c.max>=300;
       case "gt450":return c.max>450;
+      case "gt1000":return c.max>1000;
       default:return true;
     }
   }
@@ -667,7 +676,7 @@
     var rows=[["Tipe","type"],["Kisaran harga",null],["Mesin","engine"],["Kapasitas","seats"],["Varian","variants"]];
     var h='<div style="overflow:auto"><table class="cmp-table"><tr><th></th>'+cs.map(function(c){return '<th>'+c.name+'</th>'}).join("")+'</tr>';
     rows.forEach(function(r){
-      h+='<tr><td>'+r[0]+'</td>'+cs.map(function(c){return '<td>'+(r[1]?c[r[1]]:"Rp "+fmt(c.min)+" – "+fmt(c.max)+" juta")+'</td>'}).join("")+'</tr>';
+      h+='<tr><td>'+r[0]+'</td>'+cs.map(function(c){return '<td>'+(r[1]?c[r[1]]:rangeText(c))+'</td>'}).join("")+'</tr>';
     });
     h+='</table></div><p class="sub">Data mesin &amp; kapasitas bersifat ringkasan umum; konfirmasi spesifikasi tiap varian ke dealer.</p>';
     $("cmpTable").innerHTML=h;
