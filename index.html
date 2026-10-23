@@ -229,7 +229,71 @@
   body.has-compare .assistant{bottom:76px}
   body.has-compare footer{padding-bottom:160px}
 
+  /* ===== Varian & Warna (slider) ===== */
+  .btn.accent{grid-column:1/-1;background:#fff;color:#000}
+  .btn.accent:hover{background:var(--red);color:#fff}
+  .modal-box.wide{max-width:980px;padding:0;border-top:4px solid var(--red)}
+  .vm-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:26px 28px 6px;flex-wrap:wrap}
+  .vm-head h3{margin:0;font-size:clamp(30px,5vw,46px)}
+  .vm-head .vm-price{font-family:var(--font-display);font-weight:700;font-size:24px;color:var(--red-hot)}
+  .vm-tabs{display:flex;gap:8px;padding:10px 28px 0;overflow-x:auto;scrollbar-width:thin}
+  .vm-tabs button{flex:none;background:transparent;color:#fff;border:1px solid var(--line);padding:9px 16px;font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+  .vm-tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red)}
+  .vm-stage{position:relative;margin:16px 28px 0;height:clamp(240px,42vw,400px);overflow:hidden;background:radial-gradient(ellipse at 50% 90%,var(--glow,#e60012),transparent 62%),linear-gradient(160deg,#1d1d23,#08080a);transition:background .5s}
+  .vm-track{display:flex;height:100%;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+  .vm-slide{flex:0 0 100%;display:grid;place-items:center;padding:20px 60px}
+  .vm-slide img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 24px 30px rgba(0,0,0,.7))}
+  .vm-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:24px;cursor:pointer;z-index:2}
+  .vm-nav:hover{background:var(--red)}
+  .vm-nav.p{left:8px}.vm-nav.n{right:8px}
+  .vm-cname{position:absolute;left:16px;bottom:12px;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:.1em;text-transform:uppercase;z-index:2;text-shadow:0 2px 8px #000}
+  .vm-count{position:absolute;right:16px;bottom:14px;font-size:13px;letter-spacing:.14em;color:#ddd;z-index:2}
+  .vm-swatches{display:flex;flex-wrap:wrap;gap:12px;padding:18px 28px 0}
+  .sw{width:42px;height:42px;border-radius:50%;border:3px solid #333;cursor:pointer;padding:0;box-shadow:inset 0 0 0 2px #000;transition:transform .15s}
+  .sw:hover{transform:scale(1.12)}
+  .sw[aria-selected="true"]{border-color:#fff;transform:scale(1.12)}
+  .vm-info{padding:16px 28px 26px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .vm-info p{margin:0;color:var(--muted)}
+  .vm-info b{color:#fff}
+  .vm-note{padding:0 28px 22px;font-size:12px;color:#777}
+
+  /* ===== Video iklan ===== */
+  .video-wrap{display:grid;grid-template-columns:1.7fr 1fr;gap:18px;align-items:start}
+  .player{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--line);overflow:hidden}
+  .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .poster{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:24px;background:radial-gradient(ellipse at 50% 120%,rgba(230,0,18,.55),transparent 60%),linear-gradient(150deg,#1a1a20,#050506)}
+  .poster h3{font-family:var(--font-display);font-size:clamp(28px,4vw,46px);text-transform:uppercase;margin:0;line-height:1}
+  .poster p{margin:0;color:var(--muted);max-width:46ch}
+  .play{width:78px;height:78px;border-radius:50%;background:var(--red);display:grid;place-items:center;border:3px solid #fff;box-shadow:0 0 0 0 rgba(230,0,18,.7);animation:pulse 2s infinite}
+  .play svg{width:34px;height:34px;margin-left:4px}
+  @keyframes pulse{70%{box-shadow:0 0 0 24px rgba(230,0,18,0)}100%{box-shadow:0 0 0 0 rgba(230,0,18,0)}}
+  .vlist{display:grid;gap:10px}
+  .vitem{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;text-align:left;background:var(--ink);border:1px solid var(--line);color:#fff;padding:8px;cursor:pointer;font:inherit}
+  .vitem:hover,.vitem[aria-current="true"]{border-color:var(--red)}
+  .vthumb{aspect-ratio:16/9;background:linear-gradient(135deg,#2a2a32,#101013);display:grid;place-items:center;overflow:hidden}
+  .vthumb img{width:100%;height:100%;object-fit:cover}
+  .vthumb svg{width:26px;height:26px;color:var(--red-hot)}
+  .vitem b{font-family:var(--font-display);text-transform:uppercase;font-size:19px;line-height:1.1;display:block}
+  .vitem small{color:var(--muted)}
+  .vform{margin-top:18px;border:1px solid var(--line);background:var(--ink);padding:18px;display:grid;gap:10px}
+  .vform h3{margin:0;font-family:var(--font-display);text-transform:uppercase;font-size:24px}
+  .vform .r{display:flex;gap:8px;flex-wrap:wrap}
+  .vform input{flex:1;min-width:200px;background:#0e0e11;color:#fff;border:1px solid #34343c;font:inherit;padding:10px 13px;min-height:42px}
+  .vform small{color:var(--muted)}
+
+  /* Reveal animation */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+
+  /* Strip angka */
+  .stats{background:#0b0b0d;border-block:1px solid var(--line);margin-top:70px}
+  .stats-in{max-width:1200px;margin-inline:auto;padding:30px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
+  .stats b{display:block;font-family:var(--font-display);font-weight:800;font-size:clamp(34px,5vw,56px);color:var(--red-hot);line-height:1}
+  .stats span{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .brand-line{height:3px;background:linear-gradient(90deg,var(--red),transparent)}
+
   /* Responsive */
+  @media (max-width:900px){.video-wrap{grid-template-columns:1fr}.stats-in{grid-template-columns:repeat(2,1fr)}.vm-slide{padding:16px 46px}.vm-info{grid-template-columns:1fr}}
   @media (max-width:1100px){
     .burger{display:grid}
     nav.menu{position:fixed;top:var(--header-h);left:0;right:0;bottom:0;background:#000;flex-direction:column;align-items:stretch;gap:0;padding:10px 0;display:none;overflow:auto}
@@ -308,6 +372,7 @@
       <div class="nav-item">
         <button class="nav-btn" type="button" aria-expanded="false">Berita &amp; Aktivitas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m4 8 8 8 8-8"/></svg></button>
         <div class="dropdown">
+          <a href="#video">Video Iklan</a>
           <a href="#berita">Berita Terbaru</a>
           <a href="#lokasi">Lokasi Dealer</a>
           <a href="#kontak">Hubungi Kami</a>
@@ -424,6 +489,26 @@
       </div>
     </section>
 
+    <section id="video" aria-labelledby="h-video">
+      <div class="section-head rv">
+        <p class="eyebrow">Iklan &amp; TVC</p>
+        <h2 id="h-video">Video Iklan Mitsubishi</h2>
+        <p class="sub">Tonton iklan resmi Mitsubishi Motors. Punya link iklan terbaru dari YouTube? Tempel di kolom di bawah player.</p>
+      </div>
+      <div class="video-wrap rv">
+        <div>
+          <div class="player" id="player"></div>
+          <form class="vform" id="vForm">
+            <h3>Isi Video Iklan</h3>
+            <div class="r"><input id="vTitle" placeholder="Judul iklan (opsional)" aria-label="Judul iklan"><input id="vUrl" placeholder="Tempel link YouTube, contoh: https://youtu.be/xxxxxxxxxxx" aria-label="Link YouTube" required></div>
+            <div class="r"><button class="btn" type="submit">Tampilkan &amp; Simpan</button><button class="btn dark" type="button" id="vReset">Hapus video saya</button></div>
+            <small id="vNote">Video yang Anda tambahkan tersimpan di browser ini. Untuk menampilkannya permanen bagi semua pengunjung, isi daftar VIDEOS di kode.</small>
+          </form>
+        </div>
+        <div class="vlist" id="vList"></div>
+      </div>
+    </section>
+
     <section id="promo">
       <div class="section-head">
         <p class="eyebrow">Promosi</p>
@@ -462,7 +547,13 @@
     </section>
   </div>
 
-  <section class="contact" id="kontak" aria-labelledby="h-kontak">
+  <div class="stats rv"><div class="stats-in">
+    <div><b>8</b><span>Model tersedia</span></div>
+    <div><b>2</b><span>Provinsi dilayani</span></div>
+    <div><b>24 Jam</b><span>Layanan darurat</span></div>
+    <div><b>100%</b><span>Suku cadang asli</span></div>
+  </div></div>
+  <section class="contact" id="kontak" aria-labelledby="h-kontak" style="margin-top:0">
     <div class="contact-in">
       <div>
         <h2 id="h-kontak">PT. Dipo Internasional Pahala Otomotif</h2>
@@ -491,6 +582,21 @@
 
 <!-- Modals -->
 <div class="modal" id="mCompare"><div class="modal-box"><button class="modal-x" type="button" data-close aria-label="Tutup">&times;</button><h3>Perbandingan Model</h3><div id="cmpTable"></div></div></div>
+
+<div class="modal" id="mVariant"><div class="modal-box wide" role="dialog" aria-label="Varian dan warna">
+  <button class="modal-x" type="button" data-close aria-label="Tutup">&times;</button>
+  <div class="vm-head"><h3 id="vmName"></h3><span class="vm-price" id="vmPrice"></span></div>
+  <div class="vm-tabs" id="vmTabs" role="tablist" aria-label="Pilih varian"></div>
+  <div class="vm-stage" id="vmStage">
+    <div class="vm-track" id="vmTrack"></div>
+    <button class="vm-nav p" id="vmPrev" type="button" aria-label="Warna sebelumnya">&#8249;</button>
+    <button class="vm-nav n" id="vmNext" type="button" aria-label="Warna berikutnya">&#8250;</button>
+    <span class="vm-cname" id="vmCName"></span><span class="vm-count" id="vmCount"></span>
+  </div>
+  <div class="vm-swatches" id="vmSwatches" role="tablist" aria-label="Pilih warna"></div>
+  <div class="vm-info"><p id="vmDesc"></p><button class="btn" type="button" id="vmAsk">Tanya Varian Ini</button></div>
+  <p class="vm-note">Warna ditampilkan sebagai ilustrasi. Ketersediaan warna dan harga per varian dikonfirmasi dealer.</p>
+</div></div>
 
 <div class="modal" id="mDrive"><div class="modal-box"><button class="modal-x" type="button" data-close aria-label="Tutup">&times;</button>
   <h3>Jadwalkan Test Drive</h3>
@@ -542,6 +648,66 @@
     { name:"L300", type:"Niaga", min:250, max:270, variants:"Cab Chassis – Pick Up Flat Deck", image:"L300-removebg-preview.png", seats:"2 penumpang", engine:"2.2L Diesel" },
     { name:"Colt diesel", type:"Pick up", min:420, max:560, variants:"FE74 HD N – FE75 SHDX N", image:"COLT_DIESEL-removebg-preview.png", seats:"3 penumpang", engine:"4D34 Diesel" },
     { name:"Fuso", type:"Niaga", min:942, max:1400, variants:"Canter FE71 – Fighter FN61", image:"fuso_fighter-removebg-preview.png", seats:"2–3 penumpang", engine:"Diesel" },
+  ];
+
+  /* ---------- Varian & warna (ilustrasi: sesuaikan dengan data resmi dealer) ----------
+     Tiap warna bisa diberi foto resmi sendiri: { n:"Nama", h:"#hex", img:"file-foto.png" } */
+  var PAL = {
+    putih:{n:"Quartz White Pearl",h:"#f2f2f0"}, hitam:{n:"Jet Black Mica",h:"#0d0d0f"},
+    abu:{n:"Graphite Gray Metallic",h:"#5b5e63"}, perak:{n:"Sterling Silver Metallic",h:"#b8bcc2"},
+    merah:{n:"Red Metallic",h:"#b3131f"}, biru:{n:"Lunar Blue Metallic",h:"#1d4e9c"},
+    oranye:{n:"Orange Metallic",h:"#d9531e"}, hijau:{n:"Forest Green",h:"#3b5d47"},
+    beige:{n:"Sand Beige",h:"#bfae8c"}, kuning:{n:"Yellow",h:"#e0b412"}
+  };
+  function pc(keys){return keys.map(function(k){return PAL[k]})}
+  var VARIANTS = {
+    "Xpander/CROSS":[
+      {n:"GLS MT",d:"Varian entry MPV 7 penumpang dengan mesin 1.5L MIVEC irit dan kabin lega.",c:pc(["putih","abu","perak","hitam","merah"])},
+      {n:"Exceed CVT",d:"Transmisi CVT halus, fitur kenyamanan dan hiburan lebih lengkap.",c:pc(["putih","abu","perak","hitam","merah","beige"])},
+      {n:"Ultimate CVT",d:"Varian atas Xpander dengan fitur keselamatan dan kenyamanan terlengkap.",c:pc(["putih","abu","hitam","merah"])},
+      {n:"CROSS Premium",d:"Tampilan SUV-ish, ground clearance tinggi dan aksen eksterior sporty.",c:pc(["putih","abu","hitam","oranye","beige"])}
+    ],
+    "Xforce/HYBRID":[
+      {n:"Exceed CVT",d:"Elevated urban SUV bergaya modern dengan Dynamic Shield khas Mitsubishi.",c:pc(["putih","abu","perak","hitam","merah"])},
+      {n:"Ultimate CVT",d:"Fitur lengkap: layar besar, audio premium, dan bantuan berkendara.",c:pc(["putih","abu","perak","hitam","oranye"])},
+      {n:"HEV (Hybrid)",d:"Tenaga hybrid listrik yang responsif dan efisien untuk mobilitas urban.",c:pc(["putih","abu","perak","hitam"])},
+      {n:"55th Anniversary",d:"Edisi spesial ulang tahun ke-55 dengan sentuhan eksklusif.",c:pc(["putih","hitam","abu"])}
+    ],
+    "Destinator":[
+      {n:"GLS",d:"SUV 7 penumpang bermesin 1.5L Turbo dengan tampilan gagah.",c:pc(["putih","abu","perak","hitam"])},
+      {n:"Exceed",d:"Kenyamanan keluarga dengan fitur hiburan dan keselamatan tambahan.",c:pc(["putih","abu","hitam","biru"])},
+      {n:"Ultimate",d:"Varian paling lengkap: sunroof, audio premium, dan ambient light.",c:pc(["putih","abu","hitam","hijau"])},
+      {n:"55th Anniversary",d:"Edisi spesial ulang tahun ke-55 Mitsubishi.",c:pc(["putih","hitam"])}
+    ],
+    "Pajero Sport":[
+      {n:"Exceed 4×2 MT",d:"SUV tangguh bermesin 2.4L Diesel Turbo dengan transmisi manual.",c:pc(["putih","abu","perak","hitam"])},
+      {n:"Dakar 4×2 AT",d:"Tampilan Dakar yang sporty dengan transmisi otomatis.",c:pc(["putih","abu","perak","hitam","merah"])},
+      {n:"Dakar 4×4 AT",d:"Penggerak 4 roda Super Select 4WD-II untuk segala medan.",c:pc(["putih","abu","hitam","oranye"])},
+      {n:"Dakar Ultimate 4×4 AT",d:"Puncak lineup Pajero Sport dengan fitur terlengkap.",c:pc(["putih","hitam","abu","perak"])}
+    ],
+    "Triton":[
+      {n:"GLX MT Single Cab 2WD",d:"Tangguh untuk kerja berat dan bisnis harian.",c:pc(["putih","perak","hitam"])},
+      {n:"GLS Double Cab",d:"Double cab serbaguna untuk kerja dan keluarga.",c:pc(["putih","abu","perak","hitam","oranye"])},
+      {n:"Ultimate AT Double Cab 4WD",d:"Pick up premium 4WD dengan fitur terlengkap.",c:pc(["putih","abu","hitam","biru","oranye"])}
+    ],
+    "L300":[
+      {n:"Cab Chassis",d:"Sasis siap karoseri sesuai kebutuhan usaha Anda.",c:pc(["putih","perak"])},
+      {n:"Pick Up Flat Deck",d:"Bak datar tangguh untuk angkutan barang harian.",c:pc(["putih","perak","kuning"])}
+    ],
+    "Colt diesel":[
+      {n:"FE74 HD N",d:"Truk diesel tangguh untuk distribusi barang.",c:pc(["putih","kuning","biru"])},
+      {n:"FE75 SHDX N",d:"Kapasitas lebih besar untuk muatan berat.",c:pc(["putih","kuning","biru"])}
+    ],
+    "Fuso":[
+      {n:"Canter FE71",d:"Truk ringan andal dengan biaya operasional efisien.",c:pc(["putih","kuning","biru","merah"])},
+      {n:"Fighter FN61",d:"Truk medium-heavy untuk angkutan jarak jauh.",c:pc(["putih","kuning","biru","merah"])}
+    ]
+  };
+  var VIDEOS = [
+    {id:"",title:"Xforce HEV – Elevated Urban SUV",q:"Mitsubishi Xforce Hybrid iklan TVC Indonesia"},
+    {id:"",title:"Pajero Sport – Dare to Explore",q:"Mitsubishi Pajero Sport iklan TVC Indonesia"},
+    {id:"",title:"Destinator – Seven Seater SUV",q:"Mitsubishi Destinator iklan TVC Indonesia"},
+    {id:"",title:"Triton – Strong. Reliable. Ready.",q:"Mitsubishi Triton iklan TVC Indonesia"}
   ];
 
   var SLIDES = [
@@ -645,10 +811,14 @@ function rangeText(c){
         '<img src="'+c.image+'" alt="'+c.name+'" loading="lazy"></div>'+
         '<div class="info"><h3>'+c.name+'</h3><span class="range-label">Kisaran harga</span><div class="price">'+rangeText(c)+'</div>'+
         '<p class="variants">Varian: '+c.variants+'</p>'+
-        '<div class="card-actions"><a class="btn" href="'+waLink(msg)+'" target="_blank" rel="noopener">Tanya Harga</a>'+
+        '<div style="display:flex;align-items:center;gap:6px;margin:0 0 14px">'+((VARIANTS[c.name]||[])[0]||{c:[]}).c.map(function(k){return '<i title="'+k.n+'" style="width:16px;height:16px;border-radius:50%;background:'+k.h+';border:2px solid #444;display:inline-block"></i>'}).join("")+'<span style="font-size:12px;color:var(--muted);margin-left:4px">pilihan warna</span></div>'+
+        '<div class="card-actions"><button class="btn accent" type="button" data-variant="'+c.name+'">Lihat Varian &amp; Warna</button>'+
+        '<a class="btn" href="'+waLink(msg)+'" target="_blank" rel="noopener">Tanya Harga</a>'+
         '<button class="btn dark" type="button" data-credit="'+c.name+'">Simulasi</button></div></div></article>';
     }).join("");
     grid.querySelectorAll("[data-cmp]").forEach(function(b){b.addEventListener("click",function(){toggleCmp(b.getAttribute("data-cmp"))})});
+    grid.querySelectorAll("[data-variant]").forEach(function(b){b.addEventListener("click",function(){openVariant(b.getAttribute("data-variant"))})});
+    observeReveal(grid);
     grid.querySelectorAll("[data-credit]").forEach(function(b){b.addEventListener("click",function(){
       $("cModel").value=b.getAttribute("data-credit");calc(true);$("kredit").scrollIntoView({behavior:"smooth"});
     })});
@@ -784,7 +954,110 @@ function rangeText(c){
     try{navigator.clipboard.writeText(WA_DISPLAY).then(done,fb)}catch(e){fb()}
   });
 
+  /* ---------- Reveal on scroll ---------- */
+  var io=("IntersectionObserver" in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12}):null;
+  function observeReveal(root){
+    (root||document).querySelectorAll(".card,.service-card,.promo,.news,.loc,.calc,.section-head").forEach(function(el){
+      if(el.classList.contains("rv"))return;
+      el.classList.add("rv");
+      if(io){io.observe(el)}else{el.classList.add("in")}
+    });
+    (root||document).querySelectorAll(".rv:not(.in)").forEach(function(el){if(io){io.observe(el)}else{el.classList.add("in")}});
+  }
+
+  /* ---------- Slider varian & warna ---------- */
+  var vm={car:null,vi:0,ci:0};
+  function hexInfo(h){
+    var r=parseInt(h.substr(1,2),16),g=parseInt(h.substr(3,2),16),b=parseInt(h.substr(5,2),16);
+    var mx=Math.max(r,g,b),mn=Math.min(r,g,b);
+    return {lum:(0.2126*r+0.7152*g+0.0722*b)/255,sat:mx===0?0:(mx-mn)/mx};
+  }
+  function tintSlide(col,img){
+    var i=hexInfo(col.h);
+    if(col.img){return '<img src="'+col.img+'" alt="'+col.n+'">'}
+    if(i.sat<0.2){
+      var f=i.lum>0.8?"brightness(1.2) saturate(.2)":i.lum<0.15?"brightness(.32) saturate(.3)":"grayscale(1) brightness("+(0.55+i.lum*1.2).toFixed(2)+")";
+      return '<img src="'+img+'" alt="'+col.n+'" style="filter:'+f+' drop-shadow(0 24px 30px rgba(0,0,0,.7))">';
+    }
+    return '<div style="position:relative;width:100%;height:100%"><img src="'+img+'" alt="'+col.n+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">'+
+      '<div style="position:absolute;inset:0;background:'+col.h+';mix-blend-mode:color;opacity:.85;-webkit-mask:url('+img+') center/contain no-repeat;mask:url('+img+') center/contain no-repeat"></div></div>';
+  }
+  function openVariant(name){vm.car=byName(name);vm.vi=0;vm.ci=0;drawVariant();openModal("mVariant")}
+  function drawVariant(){
+    var c=vm.car,vs=VARIANTS[c.name]||[{n:c.variants,d:"",c:pc(["putih","hitam"])}],v=vs[vm.vi];
+    $("vmName").textContent=c.name;$("vmPrice").textContent=rangeText(c);
+    $("vmTabs").innerHTML=vs.map(function(x,i){return '<button type="button" role="tab" aria-selected="'+(i===vm.vi)+'" data-vi="'+i+'">'+x.n+'</button>'}).join("");
+    $("vmTrack").innerHTML=v.c.map(function(k){return '<div class="vm-slide">'+tintSlide(k,c.image)+'</div>'}).join("");
+    $("vmSwatches").innerHTML=v.c.map(function(k,i){return '<button class="sw" type="button" role="tab" aria-selected="'+(i===vm.ci)+'" aria-label="'+k.n+'" title="'+k.n+'" data-ci="'+i+'" style="background:'+k.h+'"></button>'}).join("");
+    $("vmDesc").innerHTML='<b>'+v.n+'</b> — '+(v.d||"")+' · '+c.engine+' · '+c.seats;
+    $("vmTabs").querySelectorAll("[data-vi]").forEach(function(b){b.addEventListener("click",function(){vm.vi=+b.getAttribute("data-vi");vm.ci=0;drawVariant()})});
+    $("vmSwatches").querySelectorAll("[data-ci]").forEach(function(b){b.addEventListener("click",function(){setColor(+b.getAttribute("data-ci"))})});
+    setColor(vm.ci,true);
+  }
+  function setColor(i,instant){
+    var vs=VARIANTS[vm.car.name]||[{c:pc(["putih","hitam"])}],cols=vs[vm.vi].c,n=cols.length;
+    vm.ci=(i+n)%n;var k=cols[vm.ci];
+    var t=$("vmTrack");if(instant){t.style.transition="none"}
+    t.style.transform="translateX(-"+(vm.ci*100)+"%)";
+    if(instant){void t.offsetWidth;t.style.transition=""}
+    var glow=hexInfo(k.h).lum<0.12?"#555":k.h;
+    $("vmStage").style.setProperty("--glow",glow);
+    $("vmCName").textContent=k.n;$("vmCount").textContent=(vm.ci+1)+" / "+n;
+    $("vmSwatches").querySelectorAll(".sw").forEach(function(s,j){s.setAttribute("aria-selected",j===vm.ci?"true":"false")});
+  }
+  $("vmPrev").addEventListener("click",function(){setColor(vm.ci-1)});
+  $("vmNext").addEventListener("click",function(){setColor(vm.ci+1)});
+  $("vmAsk").addEventListener("click",function(){
+    var vs=VARIANTS[vm.car.name]||[],v=vs[vm.vi]||{n:"",c:[{n:""}]},k=(v.c||[])[vm.ci]||{n:""};
+    openWa("Halo "+DEALER+", saya tertarik dengan Mitsubishi "+vm.car.name+" varian "+v.n+" warna "+k.n+". Boleh minta info harga OTR, ketersediaan unit, dan promo?");
+  });
+  (function(){var sx=0,st=$("vmStage");
+    st.addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});
+    st.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)setColor(vm.ci+(dx<0?1:-1))});
+  })();
+  document.addEventListener("keydown",function(e){
+    if(!$("mVariant").classList.contains("show"))return;
+    if(e.key==="ArrowRight")setColor(vm.ci+1);else if(e.key==="ArrowLeft")setColor(vm.ci-1);
+  });
+
+  /* ---------- Video iklan ---------- */
+  var VKEY="mitsubishi_video_saya";
+  function ytId(u){var m=String(u).trim().match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([A-Za-z0-9_-]{11})/);if(m)return m[1];return /^[A-Za-z0-9_-]{11}$/.test(String(u).trim())?String(u).trim():""}
+  function loadMine(){try{return JSON.parse(localStorage.getItem(VKEY)||"null")}catch(e){return null}}
+  var vcur=0;
+  function vAll(){var m=loadMine();return (m?[m]:[]).concat(VIDEOS)}
+  function showVideo(i,autoplay){
+    var list=vAll();vcur=i;var v=list[i],p=$("player");
+    if(v.id){
+      p.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.id+'?rel=0'+(autoplay?'&autoplay=1':'')+'" title="'+v.title.replace(/"/g,"")+'" allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe>';
+    }else{
+      p.innerHTML='<div class="poster"><span class="play"><svg viewBox="0 0 24 24" fill="#fff"><path d="M6 4l14 8-14 8z"/></svg></span><h3></h3><p>Video belum diisi. Tempel link YouTube di kolom di bawah, atau cari iklan resmi di YouTube.</p><a class="btn" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+encodeURIComponent(v.q||v.title)+'">Cari di YouTube</a></div>';
+      p.querySelector("h3").textContent=v.title;
+    }
+    document.querySelectorAll(".vitem").forEach(function(b,j){b.setAttribute("aria-current",j===i?"true":"false")});
+  }
+  function drawVideos(){
+    var list=vAll();
+    $("vList").innerHTML=list.map(function(v,i){
+      var th=v.id?'<img src="https://img.youtube.com/vi/'+v.id+'/mqdefault.jpg" alt="" loading="lazy">':'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg>';
+      return '<button class="vitem" type="button" data-v="'+i+'"><span class="vthumb">'+th+'</span><span><b></b><small>'+(v.mine?"Video saya":"Iklan Mitsubishi")+'</small></span></button>';
+    }).join("");
+    $("vList").querySelectorAll(".vitem").forEach(function(b,i){b.querySelector("b").textContent=list[i].title;b.addEventListener("click",function(){showVideo(i,true)})});
+  }
+  $("vForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var id=ytId($("vUrl").value);
+    if(!id){$("vNote").textContent="Link tidak dikenali. Gunakan link YouTube, mis. https://youtu.be/xxxxxxxxxxx";return}
+    var obj={id:id,title:$("vTitle").value.trim()||"Iklan Mitsubishi pilihan saya",mine:true};
+    try{localStorage.setItem(VKEY,JSON.stringify(obj));$("vNote").textContent="Video disimpan di browser ini."}catch(x){$("vNote").textContent="Video ditampilkan, tetapi tidak bisa disimpan di browser ini."}
+    var m=obj;VIDEOS_MINE=m;drawVideos();showVideo(0,true);$("vUrl").value="";
+  });
+  var VIDEOS_MINE=null;
+  $("vReset").addEventListener("click",function(){try{localStorage.removeItem(VKEY)}catch(x){}drawVideos();showVideo(0,false);$("vNote").textContent="Video Anda dihapus."});
+  drawVideos();showVideo(0,false);
+
   render();
+  observeReveal(document);
 </script>
 </body>
 </html>
