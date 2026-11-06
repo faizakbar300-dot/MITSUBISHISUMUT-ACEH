@@ -236,26 +236,25 @@
   .vm-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:26px 28px 6px;flex-wrap:wrap}
   .vm-head h3{margin:0;font-size:clamp(30px,5vw,46px)}
   .vm-head .vm-price{font-family:var(--font-display);font-weight:700;font-size:24px;color:var(--red-hot)}
+  .vm-stage{position:relative;margin:10px 28px 0;height:clamp(220px,40vw,380px);display:grid;place-items:center;background:radial-gradient(ellipse at 50% 85%,var(--glow,#e60012),transparent 60%),linear-gradient(160deg,#1d1d23,#08080a);transition:background .4s}
+  .vm-stage img{max-width:92%;max-height:92%;object-fit:contain;filter:drop-shadow(0 24px 30px rgba(0,0,0,.7));animation:vmIn .5s ease}
+  @keyframes vmIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
   .vm-tabs{display:flex;gap:8px;padding:10px 28px 0;overflow-x:auto;scrollbar-width:thin}
   .vm-tabs button{flex:none;background:transparent;color:#fff;border:1px solid var(--line);padding:9px 16px;font-family:var(--font-display);font-weight:700;font-size:17px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
   .vm-tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red)}
-  .vm-stage{position:relative;margin:16px 28px 0;height:clamp(240px,42vw,400px);overflow:hidden;background:radial-gradient(ellipse at 50% 90%,var(--glow,#e60012),transparent 62%),linear-gradient(160deg,#1d1d23,#08080a);transition:background .5s}
-  .vm-track{display:flex;height:100%;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
-  .vm-slide{flex:0 0 100%;display:grid;place-items:center;padding:20px 60px}
-  .vm-slide img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 24px 30px rgba(0,0,0,.7))}
-  .vm-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:24px;cursor:pointer;z-index:2}
-  .vm-nav:hover{background:var(--red)}
-  .vm-nav.p{left:8px}.vm-nav.n{right:8px}
-  .vm-cname{position:absolute;left:16px;bottom:12px;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:.1em;text-transform:uppercase;z-index:2;text-shadow:0 2px 8px #000}
-  .vm-count{position:absolute;right:16px;bottom:14px;font-size:13px;letter-spacing:.14em;color:#ddd;z-index:2}
-  .vm-swatches{display:flex;flex-wrap:wrap;gap:12px;padding:18px 28px 0}
-  .sw{width:42px;height:42px;border-radius:50%;border:3px solid #333;cursor:pointer;padding:0;box-shadow:inset 0 0 0 2px #000;transition:transform .15s}
-  .sw:hover{transform:scale(1.12)}
-  .sw[aria-selected="true"]{border-color:#fff;transform:scale(1.12)}
-  .vm-info{padding:16px 28px 26px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
-  .vm-info p{margin:0;color:var(--muted)}
-  .vm-info b{color:#fff}
-  .vm-note{padding:0 28px 22px;font-size:12px;color:#777}
+  .vm-pick{display:flex;flex-direction:column;align-items:center;gap:14px;padding:22px 28px 0}
+  .vm-swatches{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+  .sw{position:relative;width:30px;height:30px;border-radius:50%;border:0;padding:0;cursor:pointer;
+    background-image:radial-gradient(circle at 32% 28%,rgba(255,255,255,.55),rgba(255,255,255,0) 45%),radial-gradient(circle at 70% 80%,rgba(0,0,0,.35),rgba(0,0,0,0) 60%);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),0 2px 6px rgba(0,0,0,.6);transition:transform .25s ease}
+  .sw::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid transparent;transition:border-color .25s,inset .25s}
+  .sw:hover{transform:scale(1.1)}
+  .sw[aria-selected="true"]::after{border-color:#fff}
+  .vm-cname{font-family:var(--font-body);font-weight:500;font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:#e8e8ec;min-height:20px;transition:opacity .2s}
+  .vm-cname.fade{opacity:0}
+  .vm-info{padding:20px 28px 6px;display:flex;justify-content:flex-end}
+  .vm-desc{margin:0;padding:0 28px;color:var(--muted);font-size:14px}
+  .vm-note{padding:10px 28px 22px;margin:0;font-size:12px;color:#777}
 
   /* ===== Video iklan ===== */
   .video-wrap{display:grid;grid-template-columns:1.7fr 1fr;gap:18px;align-items:start}
@@ -293,7 +292,7 @@
   .brand-line{height:3px;background:linear-gradient(90deg,var(--red),transparent)}
 
   /* Responsive */
-  @media (max-width:900px){.video-wrap{grid-template-columns:1fr}.stats-in{grid-template-columns:repeat(2,1fr)}.vm-slide{padding:16px 46px}.vm-info{grid-template-columns:1fr}}
+  @media (max-width:900px){.video-wrap{grid-template-columns:1fr}.stats-in{grid-template-columns:repeat(2,1fr)}}
   @media (max-width:1100px){
     .burger{display:grid}
     nav.menu{position:fixed;top:var(--header-h);left:0;right:0;bottom:0;background:#000;flex-direction:column;align-items:stretch;gap:0;padding:10px 0;display:none;overflow:auto}
@@ -587,14 +586,10 @@
   <button class="modal-x" type="button" data-close aria-label="Tutup">&times;</button>
   <div class="vm-head"><h3 id="vmName"></h3><span class="vm-price" id="vmPrice"></span></div>
   <div class="vm-tabs" id="vmTabs" role="tablist" aria-label="Pilih varian"></div>
-  <div class="vm-stage" id="vmStage">
-    <div class="vm-track" id="vmTrack"></div>
-    <button class="vm-nav p" id="vmPrev" type="button" aria-label="Warna sebelumnya">&#8249;</button>
-    <button class="vm-nav n" id="vmNext" type="button" aria-label="Warna berikutnya">&#8250;</button>
-    <span class="vm-cname" id="vmCName"></span><span class="vm-count" id="vmCount"></span>
-  </div>
-  <div class="vm-swatches" id="vmSwatches" role="tablist" aria-label="Pilih warna"></div>
-  <div class="vm-info"><p id="vmDesc"></p><button class="btn" type="button" id="vmAsk">Tanya Varian Ini</button></div>
+  <div class="vm-stage" id="vmStage"></div>
+  <div class="vm-pick"><div class="vm-swatches" id="vmSwatches" role="tablist" aria-label="Pilih warna"></div><span class="vm-cname" id="vmCName"></span></div>
+  <div class="vm-info"><button class="btn" type="button" id="vmAsk">Tanya Varian Ini</button></div>
+  <p class="vm-desc" id="vmDesc"></p>
   <p class="vm-note">Warna ditampilkan sebagai ilustrasi. Ketersediaan warna dan harga per varian dikonfirmasi dealer.</p>
 </div></div>
 
@@ -979,34 +974,29 @@ function rangeText(c){
       var f=i.lum>0.8?"brightness(1.2) saturate(.2)":i.lum<0.15?"brightness(.32) saturate(.3)":"grayscale(1) brightness("+(0.55+i.lum*1.2).toFixed(2)+")";
       return '<img src="'+img+'" alt="'+col.n+'" style="filter:'+f+' drop-shadow(0 24px 30px rgba(0,0,0,.7))">';
     }
-    return '<div style="position:relative;width:100%;height:100%"><img src="'+img+'" alt="'+col.n+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">'+
+    return '<div style="position:relative;width:92%;height:92%"><img src="'+img+'" alt="'+col.n+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain">'+
       '<div style="position:absolute;inset:0;background:'+col.h+';mix-blend-mode:color;opacity:.85;-webkit-mask:url('+img+') center/contain no-repeat;mask:url('+img+') center/contain no-repeat"></div></div>';
   }
   function openVariant(name){vm.car=byName(name);vm.vi=0;vm.ci=0;drawVariant();openModal("mVariant")}
+  function vmVariants(){return VARIANTS[vm.car.name]||[{n:vm.car.variants,d:"",c:pc(["putih","hitam"])}]}
   function drawVariant(){
-    var c=vm.car,vs=VARIANTS[c.name]||[{n:c.variants,d:"",c:pc(["putih","hitam"])}],v=vs[vm.vi];
+    var c=vm.car,vs=vmVariants(),v=vs[vm.vi];
     $("vmName").textContent=c.name;$("vmPrice").textContent=rangeText(c);
     $("vmTabs").innerHTML=vs.map(function(x,i){return '<button type="button" role="tab" aria-selected="'+(i===vm.vi)+'" data-vi="'+i+'">'+x.n+'</button>'}).join("");
-    $("vmTrack").innerHTML=v.c.map(function(k){return '<div class="vm-slide">'+tintSlide(k,c.image)+'</div>'}).join("");
-    $("vmSwatches").innerHTML=v.c.map(function(k,i){return '<button class="sw" type="button" role="tab" aria-selected="'+(i===vm.ci)+'" aria-label="'+k.n+'" title="'+k.n+'" data-ci="'+i+'" style="background:'+k.h+'"></button>'}).join("");
-    $("vmDesc").innerHTML='<b>'+v.n+'</b> — '+(v.d||"")+' · '+c.engine+' · '+c.seats;
     $("vmTabs").querySelectorAll("[data-vi]").forEach(function(b){b.addEventListener("click",function(){vm.vi=+b.getAttribute("data-vi");vm.ci=0;drawVariant()})});
+    $("vmSwatches").innerHTML=v.c.map(function(k,i){return '<button class="sw" type="button" role="tab" aria-selected="'+(i===vm.ci)+'" aria-label="'+k.n+'" title="'+k.n+'" data-ci="'+i+'" style="background:'+k.h+'"></button>'}).join("");
+    $("vmDesc").textContent=(v.d||"")+" · "+c.engine+" · "+c.seats;
     $("vmSwatches").querySelectorAll("[data-ci]").forEach(function(b){b.addEventListener("click",function(){setColor(+b.getAttribute("data-ci"))})});
-    setColor(vm.ci,true);
+    setColor(vm.ci);
   }
-  function setColor(i,instant){
-    var vs=VARIANTS[vm.car.name]||[{c:pc(["putih","hitam"])}],cols=vs[vm.vi].c,n=cols.length;
+  function setColor(i){
+    var cols=vmVariants()[vm.vi].c,n=cols.length;
     vm.ci=(i+n)%n;var k=cols[vm.ci];
-    var t=$("vmTrack");if(instant){t.style.transition="none"}
-    t.style.transform="translateX(-"+(vm.ci*100)+"%)";
-    if(instant){void t.offsetWidth;t.style.transition=""}
-    var glow=hexInfo(k.h).lum<0.12?"#555":k.h;
-    $("vmStage").style.setProperty("--glow",glow);
-    $("vmCName").textContent=k.n;$("vmCount").textContent=(vm.ci+1)+" / "+n;
+    $("vmStage").innerHTML=tintSlide(k,vm.car.image);
+    $("vmStage").style.setProperty("--glow",hexInfo(k.h).lum<0.12?"#555":k.h);
+    var cn=$("vmCName");cn.classList.add("fade");setTimeout(function(){cn.textContent=k.n;cn.classList.remove("fade")},120);
     $("vmSwatches").querySelectorAll(".sw").forEach(function(s,j){s.setAttribute("aria-selected",j===vm.ci?"true":"false")});
   }
-  $("vmPrev").addEventListener("click",function(){setColor(vm.ci-1)});
-  $("vmNext").addEventListener("click",function(){setColor(vm.ci+1)});
   $("vmAsk").addEventListener("click",function(){
     var vs=VARIANTS[vm.car.name]||[],v=vs[vm.vi]||{n:"",c:[{n:""}]},k=(v.c||[])[vm.ci]||{n:""};
     openWa("Halo "+DEALER+", saya tertarik dengan Mitsubishi "+vm.car.name+" varian "+v.n+" warna "+k.n+". Boleh minta info harga OTR, ketersediaan unit, dan promo?");
