@@ -654,7 +654,13 @@
     oranye:{n:"Orange Metallic",h:"#d9531e"}, hijau:{n:"Forest Green",h:"#3b5d47"},
     beige:{n:"Sand Beige",h:"#bfae8c"}, kuning:{n:"Yellow",h:"#e0b412"}
   };
-  function pc(keys){return keys.map(function(k){return PAL[k]})}
+  function pc(keys){return keys.map(function(k){var o=PAL[k];return {k:k,n:o.n,h:o.h}})}
+  /* Foto resmi per model, varian, dan warna: taruh di folder
+     mobil/<model>/<varian>/<warna>.png  (lihat daftar-foto.txt untuk nama file lengkap).
+     Jika foto belum ada, otomatis tampil gambar model dengan tint warna. */
+  var PHOTO_DIR="mobil";
+  function slug(t){return String(t).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+  function photoPath(model,variant,ck){return PHOTO_DIR+"/"+slug(model)+"/"+slug(variant)+"/"+ck+".png"}
   var VARIANTS = {
     "Xpander/CROSS":[
       {n:"GLS MT",d:"Varian entry MPV 7 penumpang dengan mesin 1.5L MIVEC irit dan kabin lega.",c:pc(["putih","abu","perak","hitam","merah"])},
@@ -991,8 +997,14 @@ function rangeText(c){
   }
   function setColor(i){
     var cols=vmVariants()[vm.vi].c,n=cols.length;
-    vm.ci=(i+n)%n;var k=cols[vm.ci];
-    $("vmStage").innerHTML=tintSlide(k,vm.car.image);
+    vm.ci=(i+n)%n;var k=cols[vm.ci];var i2=vm.ci;
+    var st=$("vmStage");
+    if(k.img){st.innerHTML=tintSlide(k,vm.car.image)}
+    else{
+      var im=new Image();im.alt=k.n;im.src=photoPath(vm.car.name,vmVariants()[vm.vi].n,k.k);
+      im.onerror=function(){if(vm.ci===i2)st.innerHTML=tintSlide(k,vm.car.image)};
+      st.innerHTML="";st.appendChild(im);
+    }
     $("vmStage").style.setProperty("--glow",hexInfo(k.h).lum<0.12?"#555":k.h);
     var cn=$("vmCName");cn.classList.add("fade");setTimeout(function(){cn.textContent=k.n;cn.classList.remove("fade")},120);
     $("vmSwatches").querySelectorAll(".sw").forEach(function(s,j){s.setAttribute("aria-selected",j===vm.ci?"true":"false")});
