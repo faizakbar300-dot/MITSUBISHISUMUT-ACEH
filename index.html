@@ -679,7 +679,7 @@
   /* ---------- Varian & warna (ilustrasi: sesuaikan dengan data resmi dealer) ----------
      Tiap warna bisa diberi foto resmi sendiri: { n:"Nama", h:"#hex", img:"file-foto.png" } */
   var PAL = {
-    putih:{n:"Quartz White Pearl",h:"#f2f2f0"}, hitam:{n:"Jet Black Mica",h:"#0d0d0f",img:"xforce_hitam-removebg-preview.png"},
+    putih:{n:"Quartz White Pearl",h:"#f2f2f0"}, hitam:{n:"Jet Black Mica",h:"#0d0d0f",img:xforce_hitam-removebg-preview.png},
     abu:{n:"Graphite Gray Metallic",h:"#5b5e63"}, perak:{n:"Sterling Silver Metallic",h:"#b8bcc2"},
     merah:{n:"Red Metallic",h:"#b3131f"}, biru:{n:"Lunar Blue Metallic",h:"#1d4e9c"},
     oranye:{n:"Orange Metallic",h:"#d9531e"}, hijau:{n:"Forest Green",h:"#3b5d47"},
@@ -691,7 +691,7 @@
      Jika foto belum ada, otomatis tampil gambar model dengan tint warna. */
   var PHOTO_DIR="mobil";
   function slug(t){return String(t).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
-  function photoPath(model,variant,ck,ext){return PHOTO_DIR+"/"+slug(model)+"/"+slug(variant)+"/"+ck+"."+(ext||"png")}
+  function photoPath(model,variant,ck){return PHOTO_DIR+"/"+slug(model)+"/"+slug(variant)+"/"+ck+".png"}
   var VARIANTS = {
     "Xpander/CROSS":[
       {n:"GLS MT",d:"Varian entry MPV 7 penumpang dengan mesin 1.5L MIVEC irit dan kabin lega.",c:pc(["putih","abu","perak","hitam","merah"])},
@@ -1031,14 +1031,8 @@ function rangeText(c){
     var st=$("vmStage");
     if(k.img){st.innerHTML=tintSlide(k,vm.car.image)}
     else{
-      var im=new Image();im.alt=k.n;
-      var ex=["png","webp","jpg"],ei=0,vn=vmVariants()[vm.vi].n;
-      im.onerror=function(){
-        ei++;
-        if(ei<ex.length){im.src=photoPath(vm.car.name,vn,k.k,ex[ei])}
-        else if(vm.ci===i2){st.innerHTML=tintSlide(k,vm.car.image)}
-      };
-      im.src=photoPath(vm.car.name,vn,k.k,ex[0]);
+      var im=new Image();im.alt=k.n;im.src=photoPath(vm.car.name,vmVariants()[vm.vi].n,k.k);
+      im.onerror=function(){if(vm.ci===i2)st.innerHTML=tintSlide(k,vm.car.image)};
       st.innerHTML="";st.appendChild(im);
     }
     $("vmStage").style.setProperty("--glow",hexInfo(k.h).lum<0.12?"#555":k.h);
