@@ -843,7 +843,6 @@ function rangeText(c){
         '<img src="'+c.image+'" alt="'+c.name+'" loading="lazy"></div>'+
         '<div class="info"><h3>'+c.name+'</h3><span class="range-label">Kisaran harga</span><div class="price">'+rangeText(c)+'</div>'+
         '<p class="variants">Varian: '+c.variants+'</p>'+
-        '<div style="display:flex;align-items:center;gap:6px;margin:0 0 14px">'+((VARIANTS[c.name]||[])[0]||{c:[]}).c.map(function(k){return '<i title="'+k.n+'" style="width:16px;height:16px;border-radius:50%;background:'+k.h+';border:2px solid #444;display:inline-block"></i>'}).join("")+'<span style="font-size:12px;color:var(--muted);margin-left:4px">pilihan warna</span></div>'+
         '<div class="card-actions"><button class="btn accent" type="button" data-variant="'+c.name+'">Lihat Varian &amp; Warna</button>'+
         '<a class="btn" href="'+waLink(msg)+'" target="_blank" rel="noopener">Tanya Harga</a>'+
         '<button class="btn dark" type="button" data-credit="'+c.name+'">Simulasi</button></div></div></article>';
